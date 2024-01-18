@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_h_l_k___l_d2410_1_1_target_data" kind="struct" language="C++" prot="public">
+    <compoundname>HLK_LD2410::TargetData</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_target_data_1a6bbadf4a0bb970b78006c3812e1dc671" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::TargetData::distance</definition>
+        <argsstring></argsstring>
+        <name>distance</name>
+        <qualifiedname>HLK_LD2410::TargetData::distance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="225" column="18" bodyfile="src/HLK_LD2410.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_target_data_1aad628a53cf23fc3360c4f3855125acaa" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::TargetData::energy</definition>
+        <argsstring></argsstring>
+        <name>energy</name>
+        <qualifiedname>HLK_LD2410::TargetData::energy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="226" column="17" bodyfile="src/HLK_LD2410.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/HLK_LD2410.h" line="223" column="5" bodyfile="src/HLK_LD2410.h" bodystart="224" bodyend="227"/>
+    <listofallmembers>
+      <member refid="struct_h_l_k___l_d2410_1_1_target_data_1a6bbadf4a0bb970b78006c3812e1dc671" prot="public" virt="non-virtual"><scope>HLK_LD2410::TargetData</scope><name>distance</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_target_data_1aad628a53cf23fc3360c4f3855125acaa" prot="public" virt="non-virtual"><scope>HLK_LD2410::TargetData</scope><name>energy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

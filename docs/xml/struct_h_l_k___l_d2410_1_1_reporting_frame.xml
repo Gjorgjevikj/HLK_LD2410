@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_h_l_k___l_d2410_1_1_reporting_frame" kind="struct" language="C++" prot="public">
+    <compoundname>HLK_LD2410::ReportingFrame</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a4a0bffe5fa740ba9f261c250847425c6" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ReportingFrame::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="230" column="25" bodyfile="src/HLK_LD2410.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a68b429df931a4b7e2c286877ccb2b061" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ReportingFrame::ifDataLength</definition>
+        <argsstring></argsstring>
+        <name>ifDataLength</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::ifDataLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="231" column="18" bodyfile="src/HLK_LD2410.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a58dd8af8cc8a0ff3c83683b5b6e50eab" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::ReportingFrame::modeType</definition>
+        <argsstring></argsstring>
+        <name>modeType</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::modeType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="232" column="17" bodyfile="src/HLK_LD2410.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1af1fe2530f5303c07d547e144310d5cc5" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::ReportingFrame::ifHead</definition>
+        <argsstring></argsstring>
+        <name>ifHead</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::ifHead</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="233" column="17" bodyfile="src/HLK_LD2410.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a0d14cedd0ccb5f18f17c3aa257a70c91" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::ReportingFrame::targetState</definition>
+        <argsstring></argsstring>
+        <name>targetState</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::targetState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="235" column="17" bodyfile="src/HLK_LD2410.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1aa1fecb2c4776964776a44e48da6cd70e" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_h_l_k___l_d2410_1_1_target_data" kindref="compound">TargetData</ref></type>
+        <definition>TargetData HLK_LD2410::ReportingFrame::movingTarget</definition>
+        <argsstring></argsstring>
+        <name>movingTarget</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::movingTarget</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="236" column="20" bodyfile="src/HLK_LD2410.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a2afd1306ed3c0f7c96e8c8d72bb27635" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_h_l_k___l_d2410_1_1_target_data" kindref="compound">TargetData</ref></type>
+        <definition>TargetData HLK_LD2410::ReportingFrame::stationaryTarget</definition>
+        <argsstring></argsstring>
+        <name>stationaryTarget</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::stationaryTarget</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="237" column="20" bodyfile="src/HLK_LD2410.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1ad0a406d943d43c02d913a07db59094af" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ReportingFrame::detectionDistance</definition>
+        <argsstring></argsstring>
+        <name>detectionDistance</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::detectionDistance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="238" column="18" bodyfile="src/HLK_LD2410.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a3169d6803e3ed0c8f54cd2482e57f4b5" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::ReportingFrame::ifTail</definition>
+        <argsstring></argsstring>
+        <name>ifTail</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::ifTail</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="240" column="17" bodyfile="src/HLK_LD2410.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a79ffc11b91ac321945a4b66a01390e2f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::ReportingFrame::ifCheck</definition>
+        <argsstring></argsstring>
+        <name>ifCheck</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::ifCheck</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="241" column="17" bodyfile="src/HLK_LD2410.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_reporting_frame_1a8776fa315520f57dab5cfef809129db2" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ReportingFrame::trailer</definition>
+        <argsstring></argsstring>
+        <name>trailer</name>
+        <qualifiedname>HLK_LD2410::ReportingFrame::trailer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="242" column="25" bodyfile="src/HLK_LD2410.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>HLK_LD2410::FrameMarkerType</label>
+        <link refid="union_h_l_k___l_d2410_1_1_frame_marker_type"/>
+      </node>
+      <node id="1">
+        <label>HLK_LD2410::ReportingFrame</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_reporting_frame"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>header</edgelabel>
+          <edgelabel>trailer</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>movingTarget</edgelabel>
+          <edgelabel>stationaryTarget</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HLK_LD2410::TargetData</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_target_data"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/HLK_LD2410.h" line="228" column="5" bodyfile="src/HLK_LD2410.h" bodystart="229" bodyend="243"/>
+    <listofallmembers>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1ad0a406d943d43c02d913a07db59094af" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>detectionDistance</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a4a0bffe5fa740ba9f261c250847425c6" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>header</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a79ffc11b91ac321945a4b66a01390e2f" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>ifCheck</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a68b429df931a4b7e2c286877ccb2b061" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>ifDataLength</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1af1fe2530f5303c07d547e144310d5cc5" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>ifHead</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a3169d6803e3ed0c8f54cd2482e57f4b5" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>ifTail</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a58dd8af8cc8a0ff3c83683b5b6e50eab" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>modeType</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1aa1fecb2c4776964776a44e48da6cd70e" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>movingTarget</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a2afd1306ed3c0f7c96e8c8d72bb27635" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>stationaryTarget</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a0d14cedd0ccb5f18f17c3aa257a70c91" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>targetState</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_reporting_frame_1a8776fa315520f57dab5cfef809129db2" prot="public" virt="non-virtual"><scope>HLK_LD2410::ReportingFrame</scope><name>trailer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

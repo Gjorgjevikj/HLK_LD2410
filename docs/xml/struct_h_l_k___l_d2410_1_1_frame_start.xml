@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_h_l_k___l_d2410_1_1_frame_start" kind="struct" language="C++" prot="public">
+    <compoundname>HLK_LD2410::FrameStart</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_frame_start_1a471730caf90235ffce4a52280fe0e2f8" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::FrameStart::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <qualifiedname>HLK_LD2410::FrameStart::header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="168" column="25" bodyfile="src/HLK_LD2410.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_frame_start_1a7646f389e39b8ce2d99139fba58ed4d5" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::FrameStart::ifDataLength</definition>
+        <argsstring></argsstring>
+        <name>ifDataLength</name>
+        <qualifiedname>HLK_LD2410::FrameStart::ifDataLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="169" column="18" bodyfile="src/HLK_LD2410.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_frame_start_1a4d751745e4d6d2cb36d8519e2b7bbdec" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::FrameStart::modeType</definition>
+        <argsstring></argsstring>
+        <name>modeType</name>
+        <qualifiedname>HLK_LD2410::FrameStart::modeType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="170" column="17" bodyfile="src/HLK_LD2410.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>HLK_LD2410::FrameMarkerType</label>
+        <link refid="union_h_l_k___l_d2410_1_1_frame_marker_type"/>
+      </node>
+      <node id="1">
+        <label>HLK_LD2410::FrameStart</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_frame_start"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>header</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/HLK_LD2410.h" line="166" column="5" bodyfile="src/HLK_LD2410.h" bodystart="167" bodyend="171"/>
+    <listofallmembers>
+      <member refid="struct_h_l_k___l_d2410_1_1_frame_start_1a471730caf90235ffce4a52280fe0e2f8" prot="public" virt="non-virtual"><scope>HLK_LD2410::FrameStart</scope><name>header</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_frame_start_1a7646f389e39b8ce2d99139fba58ed4d5" prot="public" virt="non-virtual"><scope>HLK_LD2410::FrameStart</scope><name>ifDataLength</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_frame_start_1a4d751745e4d6d2cb36d8519e2b7bbdec" prot="public" virt="non-virtual"><scope>HLK_LD2410::FrameStart</scope><name>modeType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,107 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+HLK_LD2410	KEYWORD1
+FrameMarkerType	KEYWORD1
+FrameStart	KEYWORD1
+REQframeCommand	KEYWORD1
+REQframeCommandWithValue	KEYWORD1
+ACKframeCommand	KEYWORD1
+ACKframeEnableConfig	KEYWORD1
+FirmwareVersion	KEYWORD1
+ACKframeFirmwareVersion	KEYWORD1
+TargetData	KEYWORD1
+ReportingFrame	KEYWORD1
+EngineeringFrame	KEYWORD1
+RadarParameters	KEYWORD1
+ACKframeParameter	KEYWORD1
+REQframeSetParameters	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+setFrameTimeOut	KEYWORD2
+getFrameTimeOut	KEYWORD2
+setBaudRate	KEYWORD2
+enableEngineeringMode	KEYWORD2
+disableEngineeringMode	KEYWORD2
+reset	KEYWORD2
+restart	KEYWORD2
+reqFirmwareVersion	KEYWORD2
+reqParameters	KEYWORD2
+setDistanceAndDuration	KEYWORD2
+setSensitivity	KEYWORD2
+read	KEYWORD2
+frameStartMillis	KEYWORD2
+frameType	KEYWORD2
+enableConfigMode	KEYWORD2
+disableConfigMode	KEYWORD2
+target	KEYWORD2
+movingTarget	KEYWORD2
+stationaryTarget	KEYWORD2
+movingTargetDistance	KEYWORD2
+movingTargetEnergy	KEYWORD2
+stationaryTargetDistance	KEYWORD2
+stationaryTargetEnergy	KEYWORD2
+detectionDistance	KEYWORD2
+maxMovingDistanceGates	KEYWORD2
+maxStaticDistanceGates	KEYWORD2
+movementEnergyAtDistance	KEYWORD2
+restingEnergyAtDistance	KEYWORD2
+_dumpFrame	KEYWORD2
+######################################
+# Constants (LITERAL1)
+######################################
+UNIDENTIFIED_FRAME	LITERAL1
+ENGINEERING_DATA	LITERAL1
+BASIC_DATA	LITERAL1
+UNKNOWN_DATA_FORMAT	LITERAL1
+ACK_FRAME	LITERAL1
+UNKNOWN_FRAME	LITERAL1
+ENABLE_CONFIG_MODE	LITERAL1
+DISABLE_CONFIG_MODE	LITERAL1
+SET_MAX_DIST_AND_DUR	LITERAL1
+READ_PARAMETER	LITERAL1
+ENABLE_ENGINEERING_MODE	LITERAL1
+DISABLE_ENGINEERING_MODE	LITERAL1
+SET_GATE_SENS_CONFIG	LITERAL1
+READ_FIRMWARE_VERSION	LITERAL1
+SET_BAUDRATE	LITERAL1
+FACTORY_RESET	LITERAL1
+RESTART	LITERAL1
+SET_BLUETOOTH	LITERAL1
+GET_MAC_ADDRESS	LITERAL1
+BAUD_9600	LITERAL1
+BAUD_19200	LITERAL1
+BAUD_38400	LITERAL1
+BAUD_57600	LITERAL1
+BAUD_115200	LITERAL1
+BAUD_230400	LITERAL1
+BAUD_256000	LITERAL1
+BAUD_460800	LITERAL1
+GATE_0	LITERAL1
+GATE_1	LITERAL1
+GATE_2	LITERAL1
+GATE_3	LITERAL1
+GATE_4	LITERAL1
+GATE_5	LITERAL1
+GATE_6	LITERAL1
+GATE_7	LITERAL1
+GATE_8	LITERAL1
+GATE_ALL	LITERAL1
+CMD_FRAME_HEADER	LITERAL1
+
+CMD_FRAME_TRAILER = 0x01020304,
+ACK_FRAME_HEADER = 0xFAFBFCFD,
+ACK_FRAME_TRAILER = 0x01020304,
+DAT_FRAME_HEADER = 0xF1F2F3F4,
+DAT_FRAME_TRAILER = 0xF5F6F7F8
+ACK_FRAME_HEAD_BYTE = 0xfd,
+DAT_FRAME_HEAD_BYTE = 0xf4
+BluetoothOff = 0X000,
+BluetoothOn = 0X0001
+CURRENT_FRAME = false,
+LAST_FRAME = true

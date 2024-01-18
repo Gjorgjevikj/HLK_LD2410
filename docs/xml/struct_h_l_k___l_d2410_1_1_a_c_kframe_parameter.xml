@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter" kind="struct" language="C++" prot="public">
+    <compoundname>HLK_LD2410::ACKframeParameter</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a7bbde87ba782137e3731b37752262c00" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ACKframeParameter::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="278" column="25" bodyfile="src/HLK_LD2410.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a9687216b1bcb9bd91335f68dd7a233e6" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeParameter::ifDataLength</definition>
+        <argsstring></argsstring>
+        <name>ifDataLength</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::ifDataLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="279" column="18" bodyfile="src/HLK_LD2410.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a75fd51f528e77f9761dd3197fc35b4a0" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeParameter::commandReply</definition>
+        <argsstring></argsstring>
+        <name>commandReply</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::commandReply</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="280" column="18" bodyfile="src/HLK_LD2410.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a164cf9809173a4eac934935ee8c8e816" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeParameter::ackStatus</definition>
+        <argsstring></argsstring>
+        <name>ackStatus</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::ackStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="281" column="18" bodyfile="src/HLK_LD2410.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a26b619016f057b75e719aaf933e602b2" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::ACKframeParameter::ifHead</definition>
+        <argsstring></argsstring>
+        <name>ifHead</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::ifHead</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="282" column="17" bodyfile="src/HLK_LD2410.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1ad45b13b7314c1be5b9c9321a585ce9b0" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_h_l_k___l_d2410_1_1_radar_parameters" kindref="compound">RadarParameters</ref></type>
+        <definition>RadarParameters HLK_LD2410::ACKframeParameter::param</definition>
+        <argsstring></argsstring>
+        <name>param</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::param</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="283" column="25" bodyfile="src/HLK_LD2410.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a45cf5e321db0d34ecb6568c800b7bc26" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ACKframeParameter::trailer</definition>
+        <argsstring></argsstring>
+        <name>trailer</name>
+        <qualifiedname>HLK_LD2410::ACKframeParameter::trailer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="284" column="25" bodyfile="src/HLK_LD2410.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>HLK_LD2410::ACKframeParameter</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>header</edgelabel>
+          <edgelabel>trailer</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>param</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HLK_LD2410::FrameMarkerType</label>
+        <link refid="union_h_l_k___l_d2410_1_1_frame_marker_type"/>
+      </node>
+      <node id="3">
+        <label>HLK_LD2410::RadarParameters</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_radar_parameters"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/HLK_LD2410.h" line="276" column="5" bodyfile="src/HLK_LD2410.h" bodystart="277" bodyend="285"/>
+    <listofallmembers>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a164cf9809173a4eac934935ee8c8e816" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>ackStatus</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a75fd51f528e77f9761dd3197fc35b4a0" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>commandReply</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a7bbde87ba782137e3731b37752262c00" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>header</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a9687216b1bcb9bd91335f68dd7a233e6" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>ifDataLength</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a26b619016f057b75e719aaf933e602b2" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>ifHead</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1ad45b13b7314c1be5b9c9321a585ce9b0" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>param</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter_1a45cf5e321db0d34ecb6568c800b7bc26" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeParameter</scope><name>trailer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

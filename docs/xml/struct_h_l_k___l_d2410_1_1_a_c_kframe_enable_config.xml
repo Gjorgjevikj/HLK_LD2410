@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config" kind="struct" language="C++" prot="public">
+    <compoundname>HLK_LD2410::ACKframeEnableConfig</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a7882cb6962f78d84dc8c0fbb068ce718" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ACKframeEnableConfig::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="197" column="25" bodyfile="src/HLK_LD2410.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a6362d9fbb041d37564423eb1b638881a" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeEnableConfig::ifDataLength</definition>
+        <argsstring></argsstring>
+        <name>ifDataLength</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::ifDataLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="198" column="18" bodyfile="src/HLK_LD2410.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a1d77592bfc966a9766481dcbd7451d00" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeEnableConfig::commandReply</definition>
+        <argsstring></argsstring>
+        <name>commandReply</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::commandReply</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="199" column="18" bodyfile="src/HLK_LD2410.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a1e1d8e497144692de7723466f16b39e9" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeEnableConfig::ackStatus</definition>
+        <argsstring></argsstring>
+        <name>ackStatus</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::ackStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="200" column="18" bodyfile="src/HLK_LD2410.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1ae3f975800e67ad0eac1e86c57c02ddfd" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeEnableConfig::protocolVer</definition>
+        <argsstring></argsstring>
+        <name>protocolVer</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::protocolVer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="201" column="18" bodyfile="src/HLK_LD2410.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a32ab79edde37d7e1f2a70c1665e5f8f9" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeEnableConfig::bufferSize</definition>
+        <argsstring></argsstring>
+        <name>bufferSize</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::bufferSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="202" column="18" bodyfile="src/HLK_LD2410.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a7e64c44ea65acbd02b98d7e3d044bb8a" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ACKframeEnableConfig::trailer</definition>
+        <argsstring></argsstring>
+        <name>trailer</name>
+        <qualifiedname>HLK_LD2410::ACKframeEnableConfig::trailer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="203" column="25" bodyfile="src/HLK_LD2410.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>HLK_LD2410::ACKframeEnableConfig</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>header</edgelabel>
+          <edgelabel>trailer</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HLK_LD2410::FrameMarkerType</label>
+        <link refid="union_h_l_k___l_d2410_1_1_frame_marker_type"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/HLK_LD2410.h" line="195" column="5" bodyfile="src/HLK_LD2410.h" bodystart="196" bodyend="204"/>
+    <listofallmembers>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a1e1d8e497144692de7723466f16b39e9" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>ackStatus</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a32ab79edde37d7e1f2a70c1665e5f8f9" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>bufferSize</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a1d77592bfc966a9766481dcbd7451d00" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>commandReply</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a7882cb6962f78d84dc8c0fbb068ce718" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>header</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a6362d9fbb041d37564423eb1b638881a" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>ifDataLength</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1ae3f975800e67ad0eac1e86c57c02ddfd" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>protocolVer</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config_1a7e64c44ea65acbd02b98d7e3d044bb8a" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeEnableConfig</scope><name>trailer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

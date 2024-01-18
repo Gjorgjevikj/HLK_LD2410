@@ -1,0 +1,8 @@
+Debug
+Release
+__vm
+.vs
+*.sln
+*.vcxproj
+*.vcxproj.filters 
+*.vcxproj.user

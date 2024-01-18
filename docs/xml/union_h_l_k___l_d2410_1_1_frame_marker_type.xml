@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="union_h_l_k___l_d2410_1_1_frame_marker_type" kind="union" language="C++" prot="public">
+    <compoundname>HLK_LD2410::FrameMarkerType</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union_h_l_k___l_d2410_1_1_frame_marker_type_1a384540366d7ee112451adda6cee38b39" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HLK_LD2410::FrameMarkerType::frameWord</definition>
+        <argsstring></argsstring>
+        <name>frameWord</name>
+        <qualifiedname>HLK_LD2410::FrameMarkerType::frameWord</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="162" column="18" bodyfile="src/HLK_LD2410.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_h_l_k___l_d2410_1_1_frame_marker_type_1a818b483b2cde1b138ea188581e40bf64" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HLK_LD2410::FrameMarkerType::frameBytes[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>frameBytes</name>
+        <qualifiedname>HLK_LD2410::FrameMarkerType::frameBytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="163" column="17" bodyfile="src/HLK_LD2410.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/HLK_LD2410.h" line="160" column="5" bodyfile="src/HLK_LD2410.h" bodystart="161" bodyend="164"/>
+    <listofallmembers>
+      <member refid="union_h_l_k___l_d2410_1_1_frame_marker_type_1a818b483b2cde1b138ea188581e40bf64" prot="public" virt="non-virtual"><scope>HLK_LD2410::FrameMarkerType</scope><name>frameBytes</name></member>
+      <member refid="union_h_l_k___l_d2410_1_1_frame_marker_type_1a384540366d7ee112451adda6cee38b39" prot="public" virt="non-virtual"><scope>HLK_LD2410::FrameMarkerType</scope><name>frameWord</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

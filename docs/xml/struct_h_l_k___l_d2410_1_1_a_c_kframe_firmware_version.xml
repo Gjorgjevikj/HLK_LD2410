@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version" kind="struct" language="C++" prot="public">
+    <compoundname>HLK_LD2410::ACKframeFirmwareVersion</compoundname>
+    <includes refid="_h_l_k___l_d2410_8h" local="no">HLK_LD2410.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a97da788f1cc424b8f2e25d173c7dfe27" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ACKframeFirmwareVersion::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <qualifiedname>HLK_LD2410::ACKframeFirmwareVersion::header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="215" column="25" bodyfile="src/HLK_LD2410.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a363f5a1b4239474cbc80eac84c164102" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeFirmwareVersion::ifDataLength</definition>
+        <argsstring></argsstring>
+        <name>ifDataLength</name>
+        <qualifiedname>HLK_LD2410::ACKframeFirmwareVersion::ifDataLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="216" column="18" bodyfile="src/HLK_LD2410.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1aa19d0f37222da9bbb9ae6258004c8443" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeFirmwareVersion::commandReply</definition>
+        <argsstring></argsstring>
+        <name>commandReply</name>
+        <qualifiedname>HLK_LD2410::ACKframeFirmwareVersion::commandReply</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="217" column="18" bodyfile="src/HLK_LD2410.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a7981f7bcfdc48fc680bcd0e0e713911f" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t HLK_LD2410::ACKframeFirmwareVersion::ackStatus</definition>
+        <argsstring></argsstring>
+        <name>ackStatus</name>
+        <qualifiedname>HLK_LD2410::ACKframeFirmwareVersion::ackStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="218" column="18" bodyfile="src/HLK_LD2410.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1aeba7331e7e0704d4d74feea01b2a99a2" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_h_l_k___l_d2410_1_1_firmware_version" kindref="compound">FirmwareVersion</ref></type>
+        <definition>FirmwareVersion HLK_LD2410::ACKframeFirmwareVersion::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <qualifiedname>HLK_LD2410::ACKframeFirmwareVersion::version</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="219" column="25" bodyfile="src/HLK_LD2410.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a40c5d1bed086c3911f79debfbfa8c258" prot="public" static="no" mutable="no">
+        <type><ref refid="union_h_l_k___l_d2410_1_1_frame_marker_type" kindref="compound">FrameMarkerType</ref></type>
+        <definition>FrameMarkerType HLK_LD2410::ACKframeFirmwareVersion::trailer</definition>
+        <argsstring></argsstring>
+        <name>trailer</name>
+        <qualifiedname>HLK_LD2410::ACKframeFirmwareVersion::trailer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/HLK_LD2410.h" line="220" column="25" bodyfile="src/HLK_LD2410.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>HLK_LD2410::ACKframeFirmwareVersion</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>header</edgelabel>
+          <edgelabel>trailer</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>version</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HLK_LD2410::FirmwareVersion</label>
+        <link refid="struct_h_l_k___l_d2410_1_1_firmware_version"/>
+      </node>
+      <node id="2">
+        <label>HLK_LD2410::FrameMarkerType</label>
+        <link refid="union_h_l_k___l_d2410_1_1_frame_marker_type"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/HLK_LD2410.h" line="213" column="5" bodyfile="src/HLK_LD2410.h" bodystart="214" bodyend="221"/>
+    <listofallmembers>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a7981f7bcfdc48fc680bcd0e0e713911f" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeFirmwareVersion</scope><name>ackStatus</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1aa19d0f37222da9bbb9ae6258004c8443" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeFirmwareVersion</scope><name>commandReply</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a97da788f1cc424b8f2e25d173c7dfe27" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeFirmwareVersion</scope><name>header</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a363f5a1b4239474cbc80eac84c164102" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeFirmwareVersion</scope><name>ifDataLength</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1a40c5d1bed086c3911f79debfbfa8c258" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeFirmwareVersion</scope><name>trailer</name></member>
+      <member refid="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version_1aeba7331e7e0704d4d74feea01b2a99a2" prot="public" virt="non-virtual"><scope>HLK_LD2410::ACKframeFirmwareVersion</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -10,7 +10,11 @@
 
   This sensor is a Frequency Modulated Continuous Wave radar, which makes it good for presence detection and its sensitivity at different ranges to both static and moving targets can be configured.
  
- ...todo...
+  todo:
+   - better documentation
+   - examples
+   - support for new firmware
+   - support for other (simmilar) radar sensors 
 
 Known limitations:
 ...

@@ -23,7 +23,7 @@ This library is distributed in the hope that it will be useful, but
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, MERCHANTABILITY or
 FITNESS FOR A PARTICULAR PURPOSE either express or implied.
 Released into the public domain.
-Released under LGPL-2.1 see https://github.com/ncmreynolds/ld2410/LICENSE for full license
+Released under LGPL-2.1 see https://github.com/Gjorgjevikj/HLK_LD2410/blob/master/LICENSE for full license
 
 https://github.com/Gjorgjevikj/HLK_LD2410.git
 */

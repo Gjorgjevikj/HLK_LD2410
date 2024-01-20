@@ -34,6 +34,8 @@
 #define RADAR_TX_PIN 33
 #endif
 
+//#define PLOT_ADPT
+
 #include <HLK_LD2410.h>
 
 HLK_LD2410 radar;
@@ -224,10 +226,21 @@ void setup()
     */
     Serial.println("start\n");
     
-    //Serial.println("M, S, MTd, MTe, STd, Ste, dD");
+#ifdef PLOT_ADPT
+    Serial.print("\nM, S, MtD, MtE, StD, StE");
+    for (int i = 0; i < 9; i++)
+        Serial.printf(", MdE%d", i);
+    for (int i = 2; i < 9; i++)
+        Serial.printf(", SdE%d", i);
+#else
+    Serial.print("\nMS, MtD, MtE, StD, StE, G, g");
+    for (int i = 0; i < 9; i++)
+        Serial.printf(", Me%d", i);
+    for (int i = 2; i < 9; i++)
+        Serial.printf(", Se%d", i);
+    Serial.print(", SE0, SE1\n");
+#endif
 
-    Serial.print("M, S, MdE0, MdE1, MdE2, MdE3, MdE4, MdE5, MdE6, MdE7, MdE8,");
-    Serial.println(" SdE2, SdE3, SdE4, SdE5, SdE6, SdE7, SdE8");
 }
 
 void loop()
@@ -262,7 +275,9 @@ void loop()
             //    radar.stationaryTargetDistance(),
             //    radar.stationaryTargetEnergy() * 10,
             //    radar.detectionDistance());
-
+#ifdef PLOT_ADPT
+            if (radar.target() > 3)
+                radar._dumpCurrentFrame();
             Serial.printf("%3d, %3d",
                 radar.movingTarget() ? 90 : 50,
                 radar.stationaryTarget() ? 40 : 0);
@@ -272,271 +287,28 @@ void loop()
             for (int i = 2; i < 9; i++, offset += 100)
                 Serial.printf(", %3d", offset + radar.restingEnergyAtDistance(i));
             Serial.println(", 1700");
+#else
+            Serial.printf("%2d, %3d, %3d, %3d, %3d, %d, %d",
+                radar.target() & 0x0f,
+                radar.movingTargetDistance(),
+                radar.movingTargetEnergy(),
+                radar.stationaryTargetDistance(),
+                radar.stationaryTargetEnergy(),
+                radar.maxMovingDistanceGates(), // ??
+                radar.maxStaticDistanceGates()  // ?? 
+            );
+            for (int i = 0; i < 9; i++)
+                Serial.printf(", %3d", radar.movementEnergyAtDistance(i));
+            for (int i = 2; i < 9; i++)
+                Serial.printf(", %3d", radar.restingEnergyAtDistance(i));
+            Serial.printf(", %3d, %3d", radar.restingEnergyAtDistance(0), radar.restingEnergyAtDistance(1));
+            Serial.println();
+#endif
         }
     }
-    yield();
+    //yield();
+    delay(55+random(20));
+
 }
 
 
-/*
-
-#define BUF_SIZE 80
-
-// globas - to go i class
-unsigned long lastReadFrame_ts = 0;
-char rBuff[2][BUF_SIZE] = { {0},{0} };
-char *rBuffLast = rBuff[1];
-char *rBuffCurrent = rBuff[0];
-int rBuffLastLen = 0;
-int rBuffPos = 0;
-bool wholeFrameReady = false;
-
-// Reporting data frame format
-#pragma pack (1)
-struct TargetData
-{
-    uint16_t Distance;
-    uint8_t Energy;
-};
-
-struct ld2410ReportingFrame // LD2410B uses little-endian format
-{
-    uint32_t frameHeader; // F4 F3 F2 F1 0xf1f2f3f4
-    uint16_t intraFrameDataLength;
-    uint8_t modeType; // 0x01 Enginnering data, 0x02 Target basic information
-    uint8_t ifHead; // 0xAA
-
-    uint8_t targetState; // 0x00 No target, 0x01 Moving, 0x02 Stationary, 0x03 Moving+Stationary target
-    TargetData movingTarget;
-    TargetData stationaryTarget;
-    uint16_t detectionDistance;
-
-    uint8_t ifTail; // 0x55
-    uint8_t ifCheck; // 0x00
-    uint32_t frameTrailer; // F8 F7 F6 F5 0xf5f6f7f8
-};
-
-struct ld2410EngineeringFrame 
-{
-    uint32_t frameHeader; // F4 F3 F2 F1 0xf1f2f3f4
-    uint16_t intraFrameDataLength;
-    uint8_t modeType; // 0x01 Enginnering data, 0x02 Target basic information
-    uint8_t ifHead; // 0xAA
-
-    uint8_t targetState; // 0x00 No target, 0x01 Moving, 0x02 Stationary, 0x03 Moving+Stationary target
-    TargetData movingTarget;
-    TargetData stationaryTarget;
-    uint16_t detectionDistance;
-
-    uint8_t maxMovingDistance;
-    uint8_t maxStaticDistance;
-    uint8_t movmentDistanceEnergyGate[9];
-    uint8_t staticDistanceEnergyGate[9];
-    uint8_t aditionlaInfo[2];
-
-    uint8_t ifTail; // 0x55
-    uint8_t ifCheck; // 0x00
-    uint32_t frameTrailer; // F8 F7 F6 F5 0xf5f6f7f8
-};
-
-#pragma pack (0)
-
-class HLK_LD2410
-{
-    union FrameMarkerType
-    {
-        uint32_t frameHeader;
-        uint8_t fHeader[4];
-    };
-
-    struct TargetData
-    {
-        uint16_t Distance;
-        uint8_t Energy;
-    };
-
-    struct ReportingFrame // LD2410B uses little-endian format
-    {
-        FrameMarkerType header; // F4 F3 F2 F1 0xf1f2f3f4
-        uint16_t intraFrameDataLength;
-        uint8_t modeType; // 0x01 Enginnering data, 0x02 Target basic information
-        uint8_t ifHead; // 0xAA
-
-        uint8_t targetState; // 0x00 No target, 0x01 Moving, 0x02 Stationary, 0x03 Moving+Stationary target
-        TargetData movingTarget;
-        TargetData stationaryTarget;
-        uint16_t detectionDistance;
-
-        uint8_t ifTail; // 0x55
-        uint8_t ifCheck; // 0x00
-        FrameMarkerType trailer; // F8 F7 F6 F5 0xf5f6f7f8
-    };
-
-
-public:
-    const FrameMarkerType headerACK = { 0xFAFBFCFD };
-    const FrameMarkerType trailerACK = { 0x01020304 };
-    const FrameMarkerType headerDAT = { 0xF1F2F3F4 };
-    const FrameMarkerType trailerDAT = { 0xF5F6F7F8 };
-    
-    RadarLD2410x()
-    {
-        rBuffLast = rBuff[1]; rBuffCurrent = rBuff[0]; rBuffLastLen = rBuffPos = 0; radar_uart = nullptr;
-    }
-    bool begin(Stream& rStream)
-    {
-        radar_uart = &rStream;
-        return true;
-    }
-    unsigned long frameStartMillis() const { return lastFrame_ts;  }
-
-    void read();
-    void dumpLastFrame(Stream& s = Serial) const;
-    int lastFrameType() const;
-
-    uint8_t target() const { return (reinterpret_cast<const ReportingFrame*>(rBuffLast))->targetState; }
-    bool movingTarget() const { return ((reinterpret_cast<const ReportingFrame*>(rBuffLast))->targetState) & 0b01; }
-    bool stationaryTarget() const { return ((reinterpret_cast<const ReportingFrame*>(rBuffLast))->targetState) & 0b10; }
-    uint16_t movingTargetDistance() const { return (reinterpret_cast<const ReportingFrame*>(rBuffLast))->movingTarget.Distance; }
-    uint8_t movingTargetEnergy() const { return (reinterpret_cast<const ReportingFrame*>(rBuffLast))->movingTarget.Energy; }
-    uint16_t stationaryTargetDistance() const { return (reinterpret_cast<const ReportingFrame*>(rBuffLast))->stationaryTarget.Distance; }
-    uint8_t stationaryTargetEnergy() const { return (reinterpret_cast<const ReportingFrame*>(rBuffLast))->stationaryTarget.Energy; }
-    uint16_t detectionDistance() const { return (reinterpret_cast<const ReportingFrame*>(rBuffLast))->detectionDistance; }
-
-private:
-    Stream* radar_uart;
-    char rBuff[2][BUF_SIZE];
-    char* rBuffLast;
-    char* rBuffCurrent;
-    int rBuffLastLen;
-    int rBuffPos;
-    //unsigned long currentFrame_ts;
-    unsigned long lastFrame_ts;
-};
-
-void RadarLD2410x::read()
-{
-    if (rSerial.available())
-    {
-        char c = rSerial.read();
-        if (c == 0xfd || c == 0xf4) // new frame begining
-        {
-            //swap reading buffers
-            rBuffLast = rBuffCurrent;
-            rBuffLastLen = rBuffPos;
-            rBuffCurrent = rBuffLast;
-            rBuffPos = 0;
-            //lastFrame_ts = currentFrame_ts;
-            //currentFrame_ts = millis();
-            lastFrame_ts = millis();
-            wholeFrameReady = true;
-        }
-        if (rBuffPos >= BUF_SIZE)
-        {
-            Serial.println("ERROR: Serial reading buffer overrun!");
-            rBuffPos = 0;
-        }
-        rBuffCurrent[rBuffPos++] = c;
-    }
-}
-
-void RadarLD2410x::dumpLastFrame(Stream & dumpStream) const 
-{
-    for (int i = 0; i < rBuffLastLen; i++)
-        dumpStream.printf("%02x", rBuffLast[i]);
-    dumpStream.println();
-
-}
-
-int RadarLD2410x::lastFrameType() const
-{
-    const FrameMarkerType* fheader = reinterpret_cast<const FrameMarkerType*>(rBuffLast);
-    if(fheader->frameHeader == headerDAT.frameHeader)
-    {
-        return 1;
-    }
-    if (fheader->frameHeader == headerACK.frameHeader)
-    {
-        return 0;
-    }
-    return -1; // unknown
-}
-
-
-
-//////////////////////////////////////////////////////////////////////////////////
-
-void setup()
-{
-    Serial.begin(115200); //Feedback over Serial Monitor
-    rSerial.begin(256000, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN); //UART for monitoring the radar
-
-    Serial.printf("sizeof(ld2410ReportingFrame)=%d\n", sizeof(ld2410ReportingFrame));
-    Serial.printf("sizeof(ld2410EngineeringFrame)=%d\n", sizeof(ld2410EngineeringFrame));
-    
-
-
-    Serial.println("strat\n");
-    Serial.println("M, S, MTd, MTe, STd, Ste, dD");
-
-
-}
-
-void loop()
-{
-    if (rSerial.available())
-    {
-        char c = rSerial.read();
-        if (c == 0xfd || c == 0xf4) // new frame begining
-        {
-            //swap reading buffers
-            rBuffLast = rBuffCurrent;
-            rBuffLastLen = rBuffPos;
-            rBuffCurrent = rBuffLast;
-            rBuffPos = 0;
-            wholeFrameReady = true;
-        }
-        if (rBuffPos >= BUF_SIZE)
-        {
-            Serial.println("ERROR: Serial reading buffer overrun!");
-            rBuffPos = 0;
-        }
-        rBuffCurrent[rBuffPos++] = c;
-    }
-    if (wholeFrameReady)
-    {
-        
-        for (int i = 0; i < rBuffLastLen; i++)
-            Serial.printf("%02x", rBuffLast[i]);
-        Serial.println();
-        
-
-        //ld2410ReportingFrame rData = *(reinterpret_cast<ld2410ReportingFrame*>(rBuffLast));
-        const ld2410ReportingFrame * rData = reinterpret_cast<const ld2410ReportingFrame *>(rBuffLast);
-        if (rData->modeType == 0x02)
-        {
-            Serial.printf("%3d, %3d, %3d, %3d, %3d, %3d, %3d, 1000\n",
-            //Serial.printf("T:%c%c (%4x,%2x) (%4x,%2x) %d\n",
-                //((rData->targetState & 0b01) ? 'M' : '.'),
-                //((rData->targetState & 0b10) ? 'S' : '.'),
-                ((rData->targetState & 0b01) ? 10 : 0),
-                ((rData->targetState & 0b10) ? 10 : 0),
-                rData->movingTarget.Distance,
-                rData->movingTarget.Energy * 10,
-                rData->stationaryTarget.Distance,
-                rData->stationaryTarget.Energy * 10,
-                rData->detectionDistance);
-                
-            //Serial.printf("%08x %02x ... %02x %02x %08x\n",
-            //    rData->frameHeader,
-            //    rData->ifHead,
-            //    rData->ifTail,
-            //    rData->ifCheck,
-            //    rData->frameTrailer);
-                
-        }
-        wholeFrameReady = false;
-    }
-    yield();
-}
-*/

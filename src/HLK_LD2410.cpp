@@ -8,7 +8,9 @@ HLK_LD2410::HLK_LD2410() :
     radarUART(nullptr),
     receivedFrameLen(0),
     currentFrameIndex(0),
-    frameTimeOut(120)
+    frameTimeOut(120),
+    inFrame(false),
+    frameReady(false)
 {
     bufferLastFrame = receiveBuffer[1];
     bufferCurrentFrame = receiveBuffer[0];
@@ -27,22 +29,47 @@ int HLK_LD2410::read()
     {
         uint8_t c = radarUART->read();
         rc++;
-        // According to the datasheet 0xf. characters does not appaer in the packet (except the 4 byte header and trailer bytes)
-        if (c == ACK_FRAME_HEAD_BYTE || c == DAT_FRAME_HEAD_BYTE) // new frame begining (c>>4 == 0x0f)
+        if (!inFrame)
         {
-            //swap reading buffers
-            bufferLastFrame = bufferCurrentFrame;
-            receivedFrameLen = currentFrameIndex;
-            bufferCurrentFrame = bufferLastFrame;
-            currentFrameIndex = 0;
-            frameStartTS = millis();
+            if (c == ACK_FRAME_HEAD_BYTE || c == DAT_FRAME_HEAD_BYTE) // new frame begining (c>>4 == 0x0f)
+            {
+                inFrame = true;
+                frameReady = false;
+                //swap reading buffers
+                bufferLastFrame = bufferCurrentFrame;
+                receivedFrameLen = currentFrameIndex;
+                bufferCurrentFrame = bufferLastFrame;
+                currentFrameIndex = 0;
+                currentFrameStartTS = millis();
+            }
         }
-        if (currentFrameIndex >= RECEIVE_BUFFER_SIZE)
+        else
         {
-            LOG_ERROR("ERROR: Receive buffer overrun!\n");
-            currentFrameIndex = 0;
+            if (currentFrameIndex > 6) // the frame type and length can be determined 
+            {
+                if (frameType(false) == UNIDENTIFIED_FRAME) 
+                {
+                    inFrame = frameReady = false;
+                    currentFrameIndex = 0;
+                    R_LOG_WARN("Sync!\n");
+                }
+                else if(currentFrameIndex>= (reinterpret_cast<const FrameStart*>(bufferCurrentFrame))->ifDataLength+9)
+                {
+                    frameReady = true;
+                    lastFrameStartTS = currentFrameStartTS;
+                }
+            }
+            if (currentFrameIndex >= RECEIVE_BUFFER_SIZE)
+            {
+                R_LOG_ERROR("ERROR: Receive buffer overrun!\n");
+                currentFrameIndex = 0;
+            }
         }
         bufferCurrentFrame[currentFrameIndex++] = c;
+        if (currentFrameIndex >= (reinterpret_cast<const FrameStart*>(bufferCurrentFrame))->ifDataLength + 10)
+        {
+            inFrame = false;
+        }
     }
     return rc;
 }
@@ -84,7 +111,7 @@ void HLK_LD2410::readAckFrame()
         ;
     if (millis() - now >= frameTimeOut)
     {
-        LOG_WARN("TimeOut while waiting for reply\n");
+        R_LOG_WARN("TimeOut while waiting for reply\n");
     }
 
     now = millis();
@@ -95,7 +122,7 @@ void HLK_LD2410::readAckFrame()
     }
     DEBUG_DUMP_FRAME(bufferCurrentFrame, currentFrameIndex, "##[","]");
     if (millis() - now >= frameTimeOut)
-        LOG_WARN("TimeOut while waiting for ACK frame\n");
+        R_LOG_WARN("TimeOut while waiting for ACK frame\n");
 
     if (currentFrameIndex && frameType(CURRENT_FRAME) == ACK_FRAME)
     {
@@ -108,10 +135,10 @@ void HLK_LD2410::readAckFrame()
         }
         DEBUG_DUMP_FRAME(bufferCurrentFrame, currentFrameIndex, "==[", "]");
         if (millis() - now >= frameTimeOut)
-            LOG_ERROR("TimeOut while reaing ACK frame\n");
+            R_LOG_ERROR("TimeOut while reaing ACK frame\n");
     }
     else
-        LOG_ERROR("TimeOut while waiting for ACK frame\n");
+        R_LOG_ERROR("TimeOut while waiting for ACK frame\n");
 }
 
 bool HLK_LD2410::enableConfigMode() 

@@ -20,15 +20,8 @@ Known limitations:
 ...
 
 
-  The code in this library is based on the manufacturer datasheet(s) https://drive.google.com/drive/folders/1p4dhbEJA3YubyIjIIC7wwVsSo8x29Fq-
+  The code in this library was developed from scratch based on the manufacturer datasheet(s) https://drive.google.com/drive/folders/1p4dhbEJA3YubyIjIIC7wwVsSo8x29Fq-
   
-  The following resources have also been usefull:
-  
-  the LD2140 library from renstec https://github.com/Renstec/LD2410
-  
-  ?? initial piece of work for ESPHome https://github.com/rain931215/ESPHome-LD2410.
-  
-  ?? the ld2410 library from ncmreynolds https://github.com/ncmreynolds/ld2410
 
 This library is distributed in the hope that it will be useful, but
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, MERCHANTABILITY or

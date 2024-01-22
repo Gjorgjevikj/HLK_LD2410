@@ -143,28 +143,40 @@ void HLK_LD2410::readAckFrame()
 
 bool HLK_LD2410::enableConfigMode() 
 {
+    // when entering config mode (from reporting mode) several reporting frames meight be already in the buffer
+    // a longer timeout is needed to ignore them
+    // ... another apprach would be to clean up the incoming buffer of butes waiting to be read before issuing the command.
+
+    while (radarUART->available())
+        radarUART->read();
+
     REQframeCommandWithValue cmdEnableConfMode = { CMD_FRAME_HEADER, 0x0004, ENABLE_CONFIG_MODE, 0x0001, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmdEnableConfMode), sizeof(REQframeCommandWithValue));
+
+    //unsigned long prevTO = frameTimeOut;
+    //frameTimeOut = 250;
+
     readAckFrame();
     inConfigMode = commandAccknowledged(ENABLE_CONFIG_MODE, true);
+
+    //frameTimeOut = prevTO;
+
     return inConfigMode;
 }
 
 bool HLK_LD2410::disableConfigMode() 
 {
-    //it seems that End Configuration Command DOES NOT send the ACK frame 
-    //as described in the documentaion, but starts streaming data right away...
+    //??? it seems that End Configuration Command DOES NOT send the ACK frame 
+    //??? as described in the documentaion, but starts streaming data right away...
     REQframeCommand cmdEndConfMode = { CMD_FRAME_HEADER, 0x0002, DISABLE_CONFIG_MODE, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t *>(&cmdEndConfMode), sizeof(REQframeCommand));
-/*
-    const uint8_t* receivedFrame = readAckFrame();
-    const ACKframe_DisableConfig* ack = reinterpret_cast<const ACKframe_DisableConfig*>(receivedFrame);
-    DEBUG_DUMP_FRAME(receivedFrame, ack->intraFrameDataLength+10, "dc[", "]rf");
-    if (ack->commandReply != (DISABLE_CONFIG_MODE | 0x0100) || ack->ACKstatus != 0)
-        return false;
-*/
-    inConfigMode = false;
-    return true;
+
+    readAckFrame();
+    inConfigMode = !commandAccknowledged(DISABLE_CONFIG_MODE, true);
+
+    //inConfigMode = false;
+    //return true;
+    return !inConfigMode;
 }
 
 HLK_LD2410::FirmwareVersion HLK_LD2410::reqFirmwareVersion()

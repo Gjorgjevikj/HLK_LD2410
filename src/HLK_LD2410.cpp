@@ -182,25 +182,29 @@ bool HLK_LD2410::disableConfigMode()
 HLK_LD2410::FirmwareVersion HLK_LD2410::reqFirmwareVersion()
 {
     bool wasInConfigMode = inConfigMode;
+    FirmwareVersion ver; // = { 0, 0, 0, 0 };
     if (!inConfigMode)
         enableConfigMode();
     REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_FIRMWARE_VERSION, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmd), sizeof(REQframeCommand));
     readAckFrame();
     const ACKframeFirmwareVersion* ack = reinterpret_cast<const ACKframeFirmwareVersion*>(bufferCurrentFrame);
-    return commandAccknowledged(READ_FIRMWARE_VERSION, wasInConfigMode) ? ack->version : ((struct FirmwareVersion) { 0, 0, 0, 0 });
+    ver = ack->version;
+    return commandAccknowledged(READ_FIRMWARE_VERSION, wasInConfigMode) ? ver : ((struct FirmwareVersion) { 0, 0, 0, 0 });
 }
 
 HLK_LD2410::RadarParameters HLK_LD2410::reqParameters()
 {
     bool wasInConfigMode = inConfigMode;
+    RadarParameters par;
     if (!inConfigMode)
         enableConfigMode();
     REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_PARAMETER, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmd), sizeof(REQframeCommand));
     readAckFrame();
     const ACKframeParameter* ack = reinterpret_cast<const ACKframeParameter*>(bufferCurrentFrame);
-    return commandAccknowledged(READ_PARAMETER, wasInConfigMode) ? ack->param : ((struct RadarParameters) { 0, 0, 0 });
+    par = ack->param;
+    return commandAccknowledged(READ_PARAMETER, wasInConfigMode) ? par : ((struct RadarParameters) { 0, 0, 0 });
 }
 
 bool HLK_LD2410::setParameters(RadarCommand cmd, uint32_t distanceGatePar0, uint32_t distanceGatePar1, uint32_t distanceGatePar2)

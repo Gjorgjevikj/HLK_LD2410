@@ -1,4 +1,4 @@
-# HLK-LD2410 library v 0.9.0
+# HLK-LD2410 library v 0.9.1
 
   Name: HLK_LD2410
   
@@ -6,7 +6,7 @@
 
   @author Dejan Gjorgjevikj
   
-  @version 0.9.0, 1/2024
+  @version 0.9.1, 1/2024
 
   This sensor is a Frequency Modulated Continuous Wave radar, which makes it good for presence detection and its sensitivity at different ranges to both static and moving targets can be configured.
  

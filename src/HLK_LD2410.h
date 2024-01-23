@@ -1,10 +1,10 @@
 /**
-  HLK-LD2410 library v 0.9.0
+  HLK-LD2410 library v 0.9.1
   Name: HLK_LD2410
   Purpose: Arduino library for the Hi-Link LD2410 24Ghz FMCW radar sensor
 
   @author Dejan Gjorgjevikj
-  @version 0.9.0, 1/2024
+  @version 0.9.1, 1/2024
 
   This sensor is a Frequency Modulated Continuous Wave radar, which makes it good for presence detection and its sensitivity at different ranges to both static and moving targets can be configured.
  
@@ -32,7 +32,7 @@ https://github.com/Gjorgjevikj/HLK_LD2410.git
 #define _HLK_LD2410_h
 #include <Arduino.h>
 
-#define HLK_LD_LIB_VERSION 0.9
+#define HLK_LD_LIB_VERSION 0.9.1
 
 #ifndef _LOG_LEVEL 
 #define _LOG_LEVEL 2

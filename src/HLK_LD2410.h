@@ -1,10 +1,10 @@
 /**
-  HLK-LD2410 library v 0.9.1
+  HLK-LD2410 library v 0.9.2
   Name: HLK_LD2410
   Purpose: Arduino library for the Hi-Link LD2410 24Ghz FMCW radar sensor
 
   @author Dejan Gjorgjevikj
-  @version 0.9.1, 1/2024
+  @version 0.9.2, 1/2024
 
   This sensor is a Frequency Modulated Continuous Wave radar, which makes it good for presence detection and its sensitivity at different ranges to both static and moving targets can be configured.
  
@@ -15,6 +15,11 @@ Known limitations:
 
 Resources:
   The code in this library was developed from scratch based on the manufacturer datasheet(s) https://drive.google.com/drive/folders/1p4dhbEJA3YubyIjIIC7wwVsSo8x29Fq-
+
+History of changes:
+    14.01.2023 - v0.9.0 initial 
+    23.01.2023 - v0.9.1 corrected minor bug in reqVersion and reqParameter that did not work correctly if not called from config mode
+    25.01.2023 - v0.9.2 added functions for distance resolution reading and setting, Bluetooh, MAC address, fixed bug in reset function, ...
 
 This library is distributed in the hope that it will be useful, but
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, MERCHANTABILITY or
@@ -32,7 +37,7 @@ https://github.com/Gjorgjevikj/HLK_LD2410.git
 #define _HLK_LD2410_h
 #include <Arduino.h>
 
-#define HLK_LD_LIB_VERSION 0.9.1
+#define HLK_LD_LIB_VERSION 0.9.2
 
 #ifndef _LOG_LEVEL 
 #define _LOG_LEVEL 2
@@ -90,19 +95,21 @@ public:
     };
     enum RadarCommand : uint16_t 
     {
-        ENABLE_CONFIG_MODE = 0x00FF,  // enable configuration mode
-        DISABLE_CONFIG_MODE = 0x00FE,  // disable configuration mode
-        SET_MAX_DIST_AND_DUR = 0x0060,  // set the maximum Distance Gate and Unmanned Duration Parameter
-        READ_PARAMETER = 0x0061,  // read the parameters from the radar
+        ENABLE_CONFIG_MODE = 0x00FF,       // enable configuration mode
+        DISABLE_CONFIG_MODE = 0x00FE,      // disable configuration mode
+        SET_MAX_DIST_AND_DUR = 0x0060,     // set the maximum Distance Gate and Unmanned Duration Parameter
+        READ_PARAMETER = 0x0061,           // read the parameters from the radar
         ENABLE_ENGINEERING_MODE = 0x0062,  // enable engineering mode of the radar
-        DISABLE_ENGINEERING_MODE = 0x0063,  // disable engineering mode
-        SET_GATE_SENS_CONFIG = 0x0064,  // set sensitivity 0-100% for moving and stationary gates
-        READ_FIRMWARE_VERSION = 0x00A0,  // read  the firmware version
-        SET_BAUDRATE = 0x00A1,  // set serial baud rate
-        FACTORY_RESET = 0x00A2,  // Factory Reset
-        RESTART = 0x00A3,  // Restart the radar
-        SET_BLUETOOTH = 0x00A4, // Turn on/off bluetooth
-        GET_MAC_ADDRESS = 0x00A5 // Read the MAC ADDRES
+        DISABLE_ENGINEERING_MODE = 0x0063, // disable engineering mode
+        SET_GATE_SENS_CONFIG = 0x0064,     // set sensitivity 0-100% for moving and stationary gates
+        READ_FIRMWARE_VERSION = 0x00A0,    // read  the firmware version
+        SET_BAUDRATE = 0x00A1,             // set serial baud rate
+        FACTORY_RESET = 0x00A2,            // Factory Reset
+        RESTART = 0x00A3,                  // Restart the radar
+        SET_BLUETOOTH = 0x00A4,            // Turn on/off bluetooth
+        READ_MAC_ADDRESS = 0x00A5,          // Read the MAC ADDRES
+        SET_DISTANCE_RESOLUTION = 0x00AA,  // Set the distance gates resolution 0.2m | 0.75m
+        READ_DISTANCE_RESOLUTION = 0x00AB  // Query the distance resolution 
     };
 
     /// <summary>
@@ -118,6 +125,12 @@ public:
         BAUD_230400 = 0X0006,
         BAUD_256000 = 0X0007,  // radars default baud rate
         BAUD_460800 = 0X0008
+    };
+    enum DistanceResolution : uint16_t
+    {
+        DR_0_75 = 0x0000,
+        DR_0_2 = 0x0001,
+        DR_ERROR = 0x00ff
     };
     enum GateType : uint32_t // for setSensitivity
     {
@@ -224,6 +237,15 @@ public:
         FirmwareVersion version;
         FrameMarkerType trailer; // 04 03 02 01 0x01020304
     };
+    struct ACKframeDistanceResolution
+    {
+        FrameMarkerType header; // FD FC FB FA 0xfafbfcfd
+        uint16_t ifDataLength; // 06 00 == 0x0006
+        uint16_t commandReply; // AB 01 == 0x01ab
+        uint16_t ackStatus;    // 0 / 1
+        DistanceResolution distanceResolution;
+        FrameMarkerType trailer; // 04 03 02 01 0x01020304
+    };
 
     struct TargetData
     {
@@ -305,6 +327,21 @@ public:
         uint32_t distanceGateVal2;                // 23-26  = xx 00 00 00 == 0x000000xx
         FrameMarkerType trailer;                  // 27-30  = 04 03 02 01 == 0x01020304
     };
+
+    struct MACaddress
+    {
+        uint8_t mac[6];
+    };
+    struct ACKframeMacAddress
+    {                                             // byte#
+        FrameMarkerType header;                   //  1- 4  = FD FC FB FA == 0xfafbfcfd
+        uint16_t ifDataLength;                    //  5- 6  = 1A 00 == 0x001a (10) 
+        uint16_t commandReply;                    //  7- 8  = A5 01 == 0x01a5
+        uint16_t ackStatus;                       //  9-10  = 00 01 == 0x0000 / 0x0001
+        MACaddress macAddress;                    // 11-16  = 
+        FrameMarkerType trailer;                  // 17-20  = 04 03 02 01 == 0x01020304
+    };
+
 
 #pragma pack (0)
 
@@ -410,7 +447,7 @@ public:
     /// </summary>
     /// <remarks>Sends the Read Parameter command to the sensor and waits for reply from the sensor</remarks>
     /// <remarks>If the sensor was already in command mode before calling this function it will remain in command mode</remarks>
-    /// <returns><see cref="HLK_LD2410::RadarParameters">RadarParameters</see> struct containing all the parameters of the sensor (#gates, motionSensitivity and StaticSensitivity per gate, noPersonDuration)</returns>
+    /// <returns><see cref="HLK_LD2410::RadarParameters">RadarParameters</see> containing all the parameters of the sensor (#gates, motionSensitivity and StaticSensitivity per gate, noPersonDuration)</returns>
     RadarParameters reqParameters();
 
     /// <summary>
@@ -439,9 +476,42 @@ public:
         return setParameters(SET_GATE_SENS_CONFIG, distanceGate, motionSensitivity, restingSensitivity);
     }
 
-    // not supported on firmware v1.07.22082218
-    //bool setBluetooth(BluetoothMode state) { return sendCommand(SET_BLUETOOTH, state); } // turn on/off bluetooth
-    //getMacAddress(); // todo
+    /// <summary>
+    /// Sets the distance resolution for the gares (0.2m/0.75m)
+    /// </summary>
+    /// <remarks>Sends the Set Distance Resolution command to the sensor and waits for reply from the sensor</remarks>
+    /// <remarks>If the sensor was already in command mode before calling this function it will remain in command mode</remarks>
+    /// <param name="distR">HLK_LD2410::DR_0_75 / HLK_LD2410::DR_0_2</param>
+    /// <returns>true on sucess</returns>
+    bool setDistanceResolution(DistanceResolution distR) { return sendCommand(SET_DISTANCE_RESOLUTION, distR); }
+    
+    /// <summary>
+    /// Returns the distance resolution of the radar sensor
+    /// </summary>
+    /// <remarks>Sends the Read Distance Resolution command to the sensor and waits for reply from the sensor</remarks>
+    /// <remarks>If the sensor was already in command mode before calling this function it will remain in command mode</remarks>
+    /// <returns><see cref="HLK_LD2410::DistanceResolution">DistanceResolution struct</see> either DR_0_75, DR_0_2 or DR_ERROR if reading failed</returns>
+    DistanceResolution reqDistanceResolution();
+
+
+    /// <summary>
+    /// Turns Bluetooth ON / OFF
+    /// </summary>
+    /// <remarks>Controls Bluetooth function of the module</remarks>
+    /// <remarks>Sends the command to turn on/off Bluetooth and waits for reply from the sensor</remarks>
+    /// <remarks>If the sensor was already in command mode before calling this function it will remain in command mode</remarks>
+    /// <remarks>This feature is not suppotred on some modules (firmware v1.07.22082218 or is it type 0 of the firmware) or older</remarks>
+    /// <param name="state">HLK_LD2410::BluetoothOff / HLK_LD2410::BluetoothOn</param>
+    /// <returns>true on sucess</returns>
+    bool setBluetooth(BluetoothMode state) { return sendCommand(SET_BLUETOOTH, state); } // turn on/off bluetooth
+    
+    /// <summary>
+    /// Returns the Bluetooth MAC address of the radar sensor
+    /// </summary>
+    /// <remarks>Sends the Read MAC address command to the sensor and waits for reply from the sensor</remarks>
+    /// <remarks>If the sensor was already in command mode before calling this function it will remain in command mode</remarks>
+    /// <returns><see cref="HLK_LD2410::MACaddress">the MAC address</see></returns>
+    MACaddress reqMacAddress();
 
     /// <summary>
     /// Reads the data coming from the radar sensor
@@ -648,6 +718,7 @@ public:
     static void _dumpFrame(const uint8_t* buff, int len, String pre = "", String post = "", Stream& dumpStream = Serial);
 
 private:
+    void init();
     Stream* radarUART; 
     uint8_t receiveBuffer[2][RECEIVE_BUFFER_SIZE];
     uint8_t* bufferLastFrame; // pointer to the buffer where the last finished frame is stored

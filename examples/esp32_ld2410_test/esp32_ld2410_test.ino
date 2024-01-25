@@ -34,12 +34,13 @@
 #define RADAR_TX_PIN 33
 #endif
 
-//#define PLOT_ADPT
+#define PLOT_ADPT
 
 #include <HLK_LD2410.h>
 
 HLK_LD2410 radar;
 unsigned int last_frame_ts = 0;
+const char* dr[] = { "0.75m", "0.2m", "???" };
 
 void setup()
 {
@@ -75,7 +76,47 @@ void setup()
     Serial.printf("frame type=%d captured\n", radar.frameInProgressType());
     radar.dumpCurrentFrame(Serial);
     */
-    
+
+    Serial.println("Reading firmware version...");
+    HLK_LD2410::FirmwareVersion ver = radar.reqFirmwareVersion();
+    Serial.printf("FirmwareVersion %x.%02x.%08x (type%x)\n", ver.major, ver.minor, ver.bugfix, ver.type);
+    delay(200);
+
+    Serial.println("Turning off Bluetooth...");
+    if (radar.setBluetooth(HLK_LD2410::BluetoothOff))
+        Serial.println("Bluetoot turned off.");
+    else
+        Serial.println("Turning off Bluetooth failed.");
+    delay(200);
+
+    Serial.println("Reading distance resolution...");
+    HLK_LD2410::DistanceResolution d = radar.reqDistanceResolution();
+    Serial.printf("DistanceResolution : %04x (%s)\n", d, (d < 2 ? dr[d] : dr[2]));
+    delay(200);
+
+    Serial.println("Setting distance resolution to 0.2m");
+    if (radar.setDistanceResolution(HLK_LD2410::DR_0_2))
+        Serial.println("Distance resolution set to 0.2");
+    else
+        Serial.println("Setting distance resolution failed");
+    delay(200);
+
+    Serial.println("Reading distance resolution...");
+    HLK_LD2410::DistanceResolution d2 = radar.reqDistanceResolution();
+    Serial.printf("DistanceResolution now : %04x (%s)\n", d2, (d2 < 2 ? dr[d2] : dr[d2]));
+    delay(200);
+
+    Serial.println("Setting distance resolution back");
+    if (radar.setDistanceResolution(d))
+        Serial.println("Distance resolution set back to previous value");
+    else
+        Serial.println("Setting distance resolution failed");
+    delay(200);
+
+    Serial.println("Reading distance resolution...");
+    d = radar.reqDistanceResolution();
+    Serial.printf("DistanceResolution now : %04x (%s)\n", d, (d < 2 ? dr[d] : dr[2]));
+    delay(200);
     
     Serial.println("Enabling config mode...");
     if (radar.enableConfigMode())
@@ -99,7 +140,7 @@ void setup()
     }*/
     
     Serial.println("Reading firmware version...");
-    HLK_LD2410::FirmwareVersion ver = radar.reqFirmwareVersion();
+    ver = radar.reqFirmwareVersion();
     Serial.printf("FirmwareVersion %x.%02x.%08x (type%x)\n", ver.major, ver.minor, ver.bugfix, ver.type);
     delay(200);
 
@@ -141,8 +182,6 @@ void setup()
         Serial.println("Enabling EngineeringMode sucess");
     else
         Serial.println("Enabling EngineeringMode failed");
-    
-
 
 /*
     {
@@ -224,10 +263,58 @@ void setup()
 
     delay(500);
     */
+
+    delay(200);
+    Serial.println("Turning on Bluetooth...");
+    if (radar.setBluetooth(HLK_LD2410::BluetoothOn))
+        Serial.println("Bluetoot turned on.");
+    else
+        Serial.println("Turning Bluetooth on failed.");
+
+    delay(200);
+    HLK_LD2410::MACaddress maca = radar.reqMacAddress();
+    Serial.print("MAC address: ");
+    char macStr[20];
+    sprintf(macStr, "%02X:%02X:%02X:%02X:%02X:%02X",
+        maca.mac[0], maca.mac[1], maca.mac[2], maca.mac[3], maca.mac[4], maca.mac[5]);
+    Serial.println(macStr);
+
+    delay(500);
+    Serial.println("Restoring radar factory defaults...");
+    if (radar.reset())
+        Serial.println("Reseted to factory deafuls (effective after restart)");
+    else
+        Serial.println("Reset failed");
+
+    delay(500);
+    Serial.println("Setting distance resolution to 0.2m");
+    if (radar.setDistanceResolution(HLK_LD2410::DR_0_2))
+        Serial.println("Distance resolution set to 0.2");
+    else
+        Serial.println("Setting distance resolution failed");
+    delay(200);
+    
+    Serial.println("Restarting radar...");
+    if (!radar.restart())
+        Serial.println("Restart failed");
+
+    delay(1500);
+    Serial.println("Reading distance resolution...");
+    d2 = radar.reqDistanceResolution();
+    Serial.printf("DistanceResolution now : %04x (%s)\n", d2, (d2 < 2 ? dr[d2] : dr[d2]));
+    delay(200);
+
+    Serial.println("Enabling Engineering mode...");
+    if (radar.enableEngineeringMode())
+        Serial.println("Enabling EngineeringMode sucess");
+    else
+        Serial.println("Enabling EngineeringMode failed");
+
     Serial.println("start\n");
     
 #ifdef PLOT_ADPT
-    Serial.print("\nM, S, MtD, MtE, StD, StE");
+    //Serial.print("\nM, S, MtD, MtE, StD, StE");
+    Serial.print("\nM, S");
     for (int i = 0; i < 9; i++)
         Serial.printf(", MdE%d", i);
     for (int i = 2; i < 9; i++)
@@ -238,8 +325,9 @@ void setup()
         Serial.printf(", Me%d", i);
     for (int i = 2; i < 9; i++)
         Serial.printf(", Se%d", i);
-    Serial.print(", SE0, SE1\n");
+    Serial.print(", SE0, SE1");
 #endif
+    Serial.println();
 
 }
 

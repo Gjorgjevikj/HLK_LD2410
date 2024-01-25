@@ -3,15 +3,15 @@
 // This library is made for little endian systems only!
 #ifdef TEST_LITTLE_ENDIAN
 
-HLK_LD2410::HLK_LD2410() :
-    inConfigMode(false),
-    radarUART(nullptr),
-    receivedFrameLen(0),
-    currentFrameIndex(0),
-    frameTimeOut(120),
-    inFrame(false),
-    frameReady(false)
+HLK_LD2410::HLK_LD2410() : radarUART(nullptr), frameTimeOut(120)
 {
+    init();
+}
+
+void HLK_LD2410::init()
+{
+    inConfigMode = inFrame = frameReady = false;
+    receivedFrameLen = currentFrameIndex = 0;
     bufferLastFrame = receiveBuffer[1];
     bufferCurrentFrame = receiveBuffer[0];
 }
@@ -111,7 +111,7 @@ void HLK_LD2410::readAckFrame()
         ;
     if (millis() - now >= frameTimeOut)
     {
-        R_LOG_WARN("TimeOut while waiting for reply\n");
+        R_LOG_WARN("# TimeOut while waiting for reply - no response\n");
     }
 
     now = millis();
@@ -122,7 +122,7 @@ void HLK_LD2410::readAckFrame()
     }
     DEBUG_DUMP_FRAME(bufferCurrentFrame, currentFrameIndex, "##[","]");
     if (millis() - now >= frameTimeOut)
-        R_LOG_WARN("TimeOut while waiting for ACK frame\n");
+        R_LOG_WARN("# TimeOut while waiting for ACK frame\n");
 
     if (currentFrameIndex && frameType(CURRENT_FRAME) == ACK_FRAME)
     {
@@ -135,47 +135,35 @@ void HLK_LD2410::readAckFrame()
         }
         DEBUG_DUMP_FRAME(bufferCurrentFrame, currentFrameIndex, "==[", "]");
         if (millis() - now >= frameTimeOut)
-            R_LOG_ERROR("TimeOut while reaing ACK frame\n");
+            R_LOG_ERROR("# TimeOut reading ACK frame\n");
     }
     else
-        R_LOG_ERROR("TimeOut while waiting for ACK frame\n");
+        R_LOG_ERROR("# TimeOut while waiting for ACK frame\n");
 }
 
 bool HLK_LD2410::enableConfigMode() 
 {
     // when entering config mode (from reporting mode) several reporting frames meight be already in the buffer
     // a longer timeout is needed to ignore them
-    // ... another apprach would be to clean up the incoming buffer of butes waiting to be read before issuing the command.
-
+    // or ... another apprach would be to clean up the incoming buffer of butes waiting to be read before issuing the command.
     while (radarUART->available())
         radarUART->read();
-
-    REQframeCommandWithValue cmdEnableConfMode = { CMD_FRAME_HEADER, 0x0004, ENABLE_CONFIG_MODE, 0x0001, CMD_FRAME_TRAILER };
+    const static REQframeCommandWithValue cmdEnableConfMode = { CMD_FRAME_HEADER, 0x0004, ENABLE_CONFIG_MODE, 0x0001, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmdEnableConfMode), sizeof(REQframeCommandWithValue));
-
     //unsigned long prevTO = frameTimeOut;
     //frameTimeOut = 250;
-
     readAckFrame();
     inConfigMode = commandAccknowledged(ENABLE_CONFIG_MODE, true);
-
     //frameTimeOut = prevTO;
-
     return inConfigMode;
 }
 
 bool HLK_LD2410::disableConfigMode() 
 {
-    //??? it seems that End Configuration Command DOES NOT send the ACK frame 
-    //??? as described in the documentaion, but starts streaming data right away...
-    REQframeCommand cmdEndConfMode = { CMD_FRAME_HEADER, 0x0002, DISABLE_CONFIG_MODE, CMD_FRAME_TRAILER };
+    const static REQframeCommand cmdEndConfMode = { CMD_FRAME_HEADER, 0x0002, DISABLE_CONFIG_MODE, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t *>(&cmdEndConfMode), sizeof(REQframeCommand));
-
     readAckFrame();
     inConfigMode = !commandAccknowledged(DISABLE_CONFIG_MODE, true);
-
-    //inConfigMode = false;
-    //return true;
     return !inConfigMode;
 }
 
@@ -185,7 +173,7 @@ HLK_LD2410::FirmwareVersion HLK_LD2410::reqFirmwareVersion()
     FirmwareVersion ver; // = { 0, 0, 0, 0 };
     if (!inConfigMode)
         enableConfigMode();
-    REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_FIRMWARE_VERSION, CMD_FRAME_TRAILER };
+    const static REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_FIRMWARE_VERSION, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmd), sizeof(REQframeCommand));
     readAckFrame();
     const ACKframeFirmwareVersion* ack = reinterpret_cast<const ACKframeFirmwareVersion*>(bufferCurrentFrame);
@@ -199,13 +187,28 @@ HLK_LD2410::RadarParameters HLK_LD2410::reqParameters()
     RadarParameters par;
     if (!inConfigMode)
         enableConfigMode();
-    REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_PARAMETER, CMD_FRAME_TRAILER };
+    const static REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_PARAMETER, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmd), sizeof(REQframeCommand));
     readAckFrame();
     const ACKframeParameter* ack = reinterpret_cast<const ACKframeParameter*>(bufferCurrentFrame);
     par = ack->param;
     return commandAccknowledged(READ_PARAMETER, wasInConfigMode) ? par : ((struct RadarParameters) { 0, 0, 0 });
 }
+
+HLK_LD2410::MACaddress HLK_LD2410::reqMacAddress()
+{
+    bool wasInConfigMode = inConfigMode;
+    MACaddress mac = { 0, 0, 0, 0, 0, 0 };
+    if (!inConfigMode)
+        enableConfigMode();
+    const static REQframeCommandWithValue cmdReadMacAaddress = { CMD_FRAME_HEADER, 0x0004, READ_MAC_ADDRESS, 0x0001, CMD_FRAME_TRAILER };
+    write(reinterpret_cast<const uint8_t*>(&cmdReadMacAaddress), sizeof(REQframeCommandWithValue));
+    readAckFrame();
+    const ACKframeMacAddress* ack = reinterpret_cast<const ACKframeMacAddress*>(bufferCurrentFrame);
+    mac = ack->macAddress;
+    return commandAccknowledged(READ_MAC_ADDRESS, wasInConfigMode) ? mac : ((struct MACaddress) { 0, 0, 0, 0, 0, 0 });
+}
+
 
 bool HLK_LD2410::setParameters(RadarCommand cmd, uint32_t distanceGatePar0, uint32_t distanceGatePar1, uint32_t distanceGatePar2)
 {
@@ -230,6 +233,19 @@ bool HLK_LD2410::setParameters(RadarCommand cmd, uint32_t distanceGatePar0, uint
     return commandAccknowledged(cmd, wasInConfigMode);
 }
 
+HLK_LD2410::DistanceResolution HLK_LD2410::reqDistanceResolution()
+{
+    bool wasInConfigMode = inConfigMode;
+    if (!inConfigMode)
+        enableConfigMode();
+    const static REQframeCommand cmd = { CMD_FRAME_HEADER, 0x0002, READ_DISTANCE_RESOLUTION, CMD_FRAME_TRAILER };
+    write(reinterpret_cast<const uint8_t*>(&cmd), sizeof(REQframeCommand));
+    readAckFrame();
+    const ACKframeDistanceResolution* ack = reinterpret_cast<const ACKframeDistanceResolution*>(bufferCurrentFrame);
+    DistanceResolution deRet = ack->distanceResolution;
+    return commandAccknowledged(READ_DISTANCE_RESOLUTION, wasInConfigMode) ? deRet : DR_ERROR;
+}
+
 bool HLK_LD2410::sendCommand(RadarCommand cmd)
 {
     bool wasInConfigMode = inConfigMode;
@@ -238,6 +254,14 @@ bool HLK_LD2410::sendCommand(RadarCommand cmd)
     REQframeCommand cmdFrame = { CMD_FRAME_HEADER, 0x0002, cmd, CMD_FRAME_TRAILER };
     write(reinterpret_cast<const uint8_t*>(&cmdFrame), sizeof(REQframeCommand));
     readAckFrame();
+    // do not try to return from config mode after restart 
+    // the radar will restart in reporting mode immidiately after sending ACK 
+    if (cmd == RESTART)
+    {
+        init();
+        return true;
+    }
+        //wasInConfigMode = inConfigMode = false; // ?? restoring all other class variables to initial vlaues 
     return commandAccknowledged(cmd, wasInConfigMode);
 }
 

@@ -1,10 +1,10 @@
 /**
-  HLK-LD2410 library v 0.9.2
+  HLK-LD2410 library v 0.9.3
   Name: HLK_LD2410
-  Purpose: Arduino library for the Hi-Link LD2410 24Ghz FMCW radar sensor
+  Purpose: Arduino library for the Hi-Link LD2410 24Ghz FMCW radar sensor (also supports Ai-Thinker RD-01)
 
   @author Dejan Gjorgjevikj
-  @version 0.9.2, 1/2024
+  @version 0.9.3, 1/2024
 
   This sensor is a Frequency Modulated Continuous Wave radar, which makes it good for presence detection and its sensitivity at different ranges to both static and moving targets can be configured.
  
@@ -15,11 +15,13 @@ Known limitations:
 
 Resources:
   The code in this library was developed from scratch based on the manufacturer datasheet(s) https://drive.google.com/drive/folders/1p4dhbEJA3YubyIjIIC7wwVsSo8x29Fq-
+  and http://www.ai-thinker.com/pro_view-125.html (for the commands that are supported by this module)
 
 History of changes:
-    14.01.2023 - v0.9.0 initial 
-    23.01.2023 - v0.9.1 corrected minor bug in reqVersion and reqParameter that did not work correctly if not called from config mode
-    25.01.2023 - v0.9.2 added functions for distance resolution reading and setting, Bluetooh, MAC address, fixed bug in reset function, ...
+    14.01.2024 - v0.9.0 initial 
+    23.01.2024 - v0.9.1 corrected minor bug in reqVersion and reqParameter that did not work correctly if not called from config mode
+    25.01.2024 - v0.9.2 added functions for distance resolution reading and setting, Bluetooh, MAC address, fixed bug in reset function, ...
+    31.01.2024 - v0.9.3 changes in low level reading, support for timing during sending (to support RD-01 module), refactoring in readAckFrame()
 
 This library is distributed in the hope that it will be useful, but
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, MERCHANTABILITY or
@@ -107,7 +109,7 @@ public:
         FACTORY_RESET = 0x00A2,            // Factory Reset
         RESTART = 0x00A3,                  // Restart the radar
         SET_BLUETOOTH = 0x00A4,            // Turn on/off bluetooth
-        READ_MAC_ADDRESS = 0x00A5,          // Read the MAC ADDRES
+        READ_MAC_ADDRESS = 0x00A5,         // Read the MAC ADDRES
         SET_DISTANCE_RESOLUTION = 0x00AA,  // Set the distance gates resolution 0.2m | 0.75m
         READ_DISTANCE_RESOLUTION = 0x00AB  // Query the distance resolution 
     };
@@ -365,21 +367,34 @@ public:
     /// Initialize the radar sensor and associate it to UART 
     /// </summary>
     /// <param name="rStream">Stream object representing the UART</param>
-    /// <remarks>HAs to be initialized to he appropriate speed before calling begin()</remarks>
+    /// <remarks>Has to be initialized to he appropriate speed before calling begin()</remarks>
     /// <returns>true on sucess</returns>
     bool begin(Stream& rStream);
 
     /// <summary>
-    /// Sets the timeout in milliseconds
+    /// Sets the timeout for waiting for an accknowledgement frame
     /// </summary>
     /// <param name="timeout">Time in ms to wait for a response (ACK fame)</param>
     void setFrameTimeOut(unsigned long timeout) { frameTimeOut = timeout; }
 
     /// <summary>
-    /// Returns the timeout in milliseconds
+    /// Returns the timeout for waiting for an accknowledgement frame in milliseconds
     /// </summary>
-    /// <returns>Time in ms to wait for a response (ACK fame)</returns>
+    /// <returns>Time in milliseconds to wait for a response (ACK fame)</returns>
     unsigned long getFrameTimeOut() const { return frameTimeOut; }
+
+    /// <summary>
+    /// Sets the minimum time between issuing two successive commands to the radar
+    /// </summary>
+    /// <param name="interComDelay">Time in milliseconds between two successive commands</param>
+    /// <remarks>Some radars are slower in procceing issued comands and have small imput buffers (RD-01)</remarks>
+    void setInterCommandDelay(unsigned long interComDelay) { interCommandDelay = interComDelay; }
+
+    /// <summary>
+    /// Returns the minimum time between issuing two successive commands to the radar
+    /// </summary>
+    /// <returns>Time in milliseconds between two successive commands</returns>
+    unsigned long getInterCommandDelay() const { return interCommandDelay; }
 
     /// <summary>
     /// Sets the communication speed of the sensor  
@@ -534,7 +549,7 @@ public:
     /// </summary>
     /// <remarks>can select current or previous frame</remarks>
     /// <param name="frame">frame selector: true (default) for the last cmoplitely received frame / false for the current frame</param>
-    /// <returns>FrameType value { 
+    /// <returns>FrameType value  
     /// <list type="bullet">
     /// <item>UNIDENTIFIED_FRAME, </item>
     /// <item>ENGINEERING_DATA, </item>
@@ -543,8 +558,8 @@ public:
     /// <item>ACK_FRAME, </item>
     /// <item>UNKNOWN_FRAME </item>
     /// </list>
-    /// }</returns>
-    FrameType frameType(bool frame = true) const; // type of the last completely received frame by default
+    /// </returns>
+    FrameType frameType(bool frame = HLK_LD2410::LAST_FRAME) const; // type of the last completely received frame by default
 
     /// <summary>
     /// Enter the configuration mode of the radar sesnsor
@@ -655,7 +670,8 @@ public:
     /// Waits for the response from the radar (ACK frame) after issuing a command to the radar
     /// </summary>
     /// <remarks>Reads the incoming data of the ACK frame and stores it in the buffer and checks its validity</remarks>
-    void readAckFrame();
+    /// <returns>true on sucess, false on timeout</returns>
+    bool readAckFrame();
 
     /// <summary>
     /// Issues a command to the radar
@@ -681,9 +697,10 @@ public:
     /// </summary>
     /// <remarks>Waits for an accknoledgement for an issued command to radar sensor waits for the ACK frame and checks its validity</remarks>
     /// <param name="command">command to be sent (see <see cref="enum RadarCommand">enum RadarCommand</see>)</param>
+    /// <param name="AckFrameReceived">was an ACK frame succesfully received</param>
     /// <param name="remainInConfig">wherethere to remain on config mode after ACK has been received</param>
     /// <returns>true on sucess</returns>
-    bool commandAccknowledged(RadarCommand command, bool remainInConfig);
+    bool commandAccknowledged(RadarCommand command, bool AckFrameReceived, bool remainInConfig);
 
     /// <summary>
     /// Setting the parameters of the radar sensor
@@ -725,7 +742,8 @@ private:
     uint8_t* bufferCurrentFrame; // pointer to the buffer where the next (or currently beeing recived) frame is to be stored
     unsigned long currentFrameStartTS; // the timestamp (milliseconds) when the first bute of the current frame has been recived
     unsigned long lastFrameStartTS; // the timestamp (milliseconds) when the first bute of the last finished frame has been recived
-    unsigned long frameTimeOut; // user settable - timeput in milliseconds to wait for reply (ACK frame) after issuing a commnad
+    unsigned long frameTimeOut; // user settable - timeout in milliseconds to wait for reply (ACK frame) after issuing a commnad
+    unsigned long interCommandDelay; // user settable - minimum time between issued commands to the radar (req for RD-01)
     int receivedFrameLen; // the actual length of the last received frame 
     int currentFrameIndex; // the index to the buffer position wher the next received byte is going to be written
     bool inConfigMode; // is tha radar sensor in config mode

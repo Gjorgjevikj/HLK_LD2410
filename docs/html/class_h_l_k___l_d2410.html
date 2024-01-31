@@ -23,7 +23,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="Military_(4).png"/></td>
   <td id="projectalign">
-   <div id="projectname">HLK_LD2410<span id="projectnumber">&#160;0.9</span>
+   <div id="projectname">HLK_LD2410<span id="projectnumber">&#160;0.9.3</span>
    </div>
    <div id="projectbrief">Arduino library for the Hi-Link HLK-LD2410 radar sensor</div>
   </td>
@@ -77,9 +77,13 @@ $(document).ready(function(){initNavTree('class_h_l_k___l_d2410.html',''); initR
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_a_c_kframe_command.html">ACKframeCommand</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_a_c_kframe_distance_resolution.html">ACKframeDistanceResolution</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_a_c_kframe_enable_config.html">ACKframeEnableConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_a_c_kframe_firmware_version.html">ACKframeFirmwareVersion</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_a_c_kframe_mac_address.html">ACKframeMacAddress</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_a_c_kframe_parameter.html">ACKframeParameter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -91,6 +95,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="union_h_l_k___l_d2410_1_1_frame_marker_type.html">FrameMarkerType</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_frame_start.html">FrameStart</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_m_a_caddress.html">MACaddress</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_l_k___l_d2410_1_1_radar_parameters.html">RadarParameters</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">struct representing the parameters of the radar sensor (#gates, motionSensitivity and StaticSensitivity per gate, noPersonDuration)  <a href="struct_h_l_k___l_d2410_1_1_radar_parameters.html#details">More...</a><br /></td></tr>
@@ -135,7 +141,9 @@ Public Types</h2></td></tr>
 , <a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348a1cb807c85148e9c6a563a32227678261">RESTART</a> = 0x00A3
 , <a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348a642528ca2a21a465dad8e478046eefce">SET_BLUETOOTH</a> = 0x00A4
 , <br />
-&#160;&#160;<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348a7e23d2b1fe280de7e9eb279b4fff8934">GET_MAC_ADDRESS</a> = 0x00A5
+&#160;&#160;<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348acdb61146c72e9f9d78f3c1536289b1c7">READ_MAC_ADDRESS</a> = 0x00A5
+, <a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348a6cf1f81c4ebad9cda76291061f20e24d">SET_DISTANCE_RESOLUTION</a> = 0x00AA
+, <a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348a85bcf81d5b59c034cc26b4cfbfd2fb49">READ_DISTANCE_RESOLUTION</a> = 0x00AB
 <br />
  }</td></tr>
 <tr class="separator:a0fbe7681645f3d9871cc062537a00348"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +161,11 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a97c47dceab1353e79f23a1fd7ff1bec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Communication speed to the radar sensor UART  <a href="class_h_l_k___l_d2410.html#a97c47dceab1353e79f23a1fd7ff1bec0">More...</a><br /></td></tr>
 <tr class="separator:a97c47dceab1353e79f23a1fd7ff1bec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb62dc23e8755c7e99b4a45b3d054d8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">DistanceResolution</a> : uint16_t { <a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8af7e1c25d035bfa891eec80f80065b957">DR_0_75</a> = 0x0000
+, <a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8af8177c7160508ffc33a83d99bfc29e42">DR_0_2</a> = 0x0001
+, <a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8a0b168c92284db79906305dc152c6a8b0">DR_ERROR</a> = 0x00ff
+ }</td></tr>
+<tr class="separator:a6eb62dc23e8755c7e99b4a45b3d054d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbd920a39b4a92860a1e3e015969b813"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#abbd920a39b4a92860a1e3e015969b813">GateType</a> : uint32_t { <br />
 &#160;&#160;<a class="el" href="class_h_l_k___l_d2410.html#abbd920a39b4a92860a1e3e015969b813a5942f8ae9c97f6e17d8bdd6db2ba87e0">GATE_0</a> = 0x00000000
 , <a class="el" href="class_h_l_k___l_d2410.html#abbd920a39b4a92860a1e3e015969b813a101df0f854e2f0ea7e42536904fc87a7">GATE_1</a> = 0x00000001
@@ -202,11 +215,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9d3d32062d49f4e7f319e4c0c37f65d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the radar sensor and associate it to UART  <a href="class_h_l_k___l_d2410.html#a9d3d32062d49f4e7f319e4c0c37f65d4">More...</a><br /></td></tr>
 <tr class="separator:a9d3d32062d49f4e7f319e4c0c37f65d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d22032d55f0614a1a649287e9d47b4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a9d22032d55f0614a1a649287e9d47b4c">setFrameTimeOut</a> (unsigned long timeout)</td></tr>
-<tr class="memdesc:a9d22032d55f0614a1a649287e9d47b4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the timeout in milliseconds  <a href="class_h_l_k___l_d2410.html#a9d22032d55f0614a1a649287e9d47b4c">More...</a><br /></td></tr>
+<tr class="memdesc:a9d22032d55f0614a1a649287e9d47b4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the timeout for waiting for an accknowledgement frame  <a href="class_h_l_k___l_d2410.html#a9d22032d55f0614a1a649287e9d47b4c">More...</a><br /></td></tr>
 <tr class="separator:a9d22032d55f0614a1a649287e9d47b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf8e405bff05e824d7241b4ce26164ad"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#aaf8e405bff05e824d7241b4ce26164ad">getFrameTimeOut</a> () const</td></tr>
-<tr class="memdesc:aaf8e405bff05e824d7241b4ce26164ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the timeout in milliseconds  <a href="class_h_l_k___l_d2410.html#aaf8e405bff05e824d7241b4ce26164ad">More...</a><br /></td></tr>
+<tr class="memdesc:aaf8e405bff05e824d7241b4ce26164ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the timeout for waiting for an accknowledgement frame in milliseconds  <a href="class_h_l_k___l_d2410.html#aaf8e405bff05e824d7241b4ce26164ad">More...</a><br /></td></tr>
 <tr class="separator:aaf8e405bff05e824d7241b4ce26164ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a355cd1a320bb51770a39a3ccc34a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a71a355cd1a320bb51770a39a3ccc34a7">setInterCommandDelay</a> (unsigned long interComDelay)</td></tr>
+<tr class="memdesc:a71a355cd1a320bb51770a39a3ccc34a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the minimum time between issuing two successive commands to the radar  <a href="class_h_l_k___l_d2410.html#a71a355cd1a320bb51770a39a3ccc34a7">More...</a><br /></td></tr>
+<tr class="separator:a71a355cd1a320bb51770a39a3ccc34a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53ea7fb2531bb4380fcc22bcd4083479"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a53ea7fb2531bb4380fcc22bcd4083479">getInterCommandDelay</a> () const</td></tr>
+<tr class="memdesc:a53ea7fb2531bb4380fcc22bcd4083479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum time between issuing two successive commands to the radar  <a href="class_h_l_k___l_d2410.html#a53ea7fb2531bb4380fcc22bcd4083479">More...</a><br /></td></tr>
+<tr class="separator:a53ea7fb2531bb4380fcc22bcd4083479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30c0bca316821c1a8c4a5f8097baaf4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a30c0bca316821c1a8c4a5f8097baaf4f">setBaudRate</a> (<a class="el" href="class_h_l_k___l_d2410.html#a97c47dceab1353e79f23a1fd7ff1bec0">BaudRate</a> rate)</td></tr>
 <tr class="memdesc:a30c0bca316821c1a8c4a5f8097baaf4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the communication speed of the sensor <br  />
   <a href="class_h_l_k___l_d2410.html#a30c0bca316821c1a8c4a5f8097baaf4f">More...</a><br /></td></tr>
@@ -237,15 +256,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5983b45e6cd2c4377d69b8eecb071e92"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a5983b45e6cd2c4377d69b8eecb071e92">setSensitivity</a> (uint32_t distanceGate, uint32_t motionSensitivity, uint32_t restingSensitivity)</td></tr>
 <tr class="memdesc:a5983b45e6cd2c4377d69b8eecb071e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sensitivity of the radar sensor for a specified gate (distance)  <a href="class_h_l_k___l_d2410.html#a5983b45e6cd2c4377d69b8eecb071e92">More...</a><br /></td></tr>
 <tr class="separator:a5983b45e6cd2c4377d69b8eecb071e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67daca1c5fcf32ff1f507bf9b5493c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#ad67daca1c5fcf32ff1f507bf9b5493c8">setDistanceResolution</a> (<a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">DistanceResolution</a> distR)</td></tr>
+<tr class="memdesc:ad67daca1c5fcf32ff1f507bf9b5493c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the distance resolution for the gares (0.2m/0.75m)  <a href="class_h_l_k___l_d2410.html#ad67daca1c5fcf32ff1f507bf9b5493c8">More...</a><br /></td></tr>
+<tr class="separator:ad67daca1c5fcf32ff1f507bf9b5493c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8efd45d472265817b56056aa474eca81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">DistanceResolution</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a8efd45d472265817b56056aa474eca81">reqDistanceResolution</a> ()</td></tr>
+<tr class="memdesc:a8efd45d472265817b56056aa474eca81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the distance resolution of the radar sensor  <a href="class_h_l_k___l_d2410.html#a8efd45d472265817b56056aa474eca81">More...</a><br /></td></tr>
+<tr class="separator:a8efd45d472265817b56056aa474eca81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e9b94175a9b441822529f36f3bf8da8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a2e9b94175a9b441822529f36f3bf8da8">setBluetooth</a> (<a class="el" href="class_h_l_k___l_d2410.html#a865f74f467a85eae9bb948373328115c">BluetoothMode</a> state)</td></tr>
+<tr class="memdesc:a2e9b94175a9b441822529f36f3bf8da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns Bluetooth ON / OFF  <a href="class_h_l_k___l_d2410.html#a2e9b94175a9b441822529f36f3bf8da8">More...</a><br /></td></tr>
+<tr class="separator:a2e9b94175a9b441822529f36f3bf8da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a450633052577375e725fd5b9482f977f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_l_k___l_d2410_1_1_m_a_caddress.html">MACaddress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a450633052577375e725fd5b9482f977f">reqMacAddress</a> ()</td></tr>
+<tr class="memdesc:a450633052577375e725fd5b9482f977f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Bluetooth MAC address of the radar sensor  <a href="class_h_l_k___l_d2410.html#a450633052577375e725fd5b9482f977f">More...</a><br /></td></tr>
+<tr class="separator:a450633052577375e725fd5b9482f977f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a370a22be075595ca1912abfab0c672f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a370a22be075595ca1912abfab0c672f0">read</a> ()</td></tr>
 <tr class="memdesc:a370a22be075595ca1912abfab0c672f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the data coming from the radar sensor  <a href="class_h_l_k___l_d2410.html#a370a22be075595ca1912abfab0c672f0">More...</a><br /></td></tr>
 <tr class="separator:a370a22be075595ca1912abfab0c672f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa74a35819c158af0383d865c389f93dc"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#aa74a35819c158af0383d865c389f93dc">frameStartMillis</a> (bool frame=true) const</td></tr>
 <tr class="memdesc:aa74a35819c158af0383d865c389f93dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the timstamp (millis) of the current/last frame  <a href="class_h_l_k___l_d2410.html#aa74a35819c158af0383d865c389f93dc">More...</a><br /></td></tr>
 <tr class="separator:aa74a35819c158af0383d865c389f93dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a601f39229a537441d20af867fcaeb368"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_h_l_k___l_d2410.html#aaee79e6cd6622844897f6fca82a07ccd">FrameType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a601f39229a537441d20af867fcaeb368">frameType</a> (bool frame=true) const</td></tr>
-<tr class="memdesc:a601f39229a537441d20af867fcaeb368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the current/last frame  <a href="class_h_l_k___l_d2410.html#a601f39229a537441d20af867fcaeb368">More...</a><br /></td></tr>
-<tr class="separator:a601f39229a537441d20af867fcaeb368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7bcaa93faea50c96b32e0472bd92dfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_h_l_k___l_d2410.html#aaee79e6cd6622844897f6fca82a07ccd">FrameType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#af7bcaa93faea50c96b32e0472bd92dfb">frameType</a> (bool frame=<a class="el" href="class_h_l_k___l_d2410.html#a8a3f9237be4cf5dc2fd5fda0ce0162e6a2ff4f2527240f3db1d12dd55841f6b5f">HLK_LD2410::LAST_FRAME</a>) const</td></tr>
+<tr class="memdesc:af7bcaa93faea50c96b32e0472bd92dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the current/last frame  <a href="class_h_l_k___l_d2410.html#af7bcaa93faea50c96b32e0472bd92dfb">More...</a><br /></td></tr>
+<tr class="separator:af7bcaa93faea50c96b32e0472bd92dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1224e909d676a72f71ff96f0e2c6ebf0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a1224e909d676a72f71ff96f0e2c6ebf0">enableConfigMode</a> ()</td></tr>
 <tr class="memdesc:a1224e909d676a72f71ff96f0e2c6ebf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enter the configuration mode of the radar sesnsor  <a href="class_h_l_k___l_d2410.html#a1224e909d676a72f71ff96f0e2c6ebf0">More...</a><br /></td></tr>
 <tr class="separator:a1224e909d676a72f71ff96f0e2c6ebf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,18 +322,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0ab55c305cee513cd8af8801e8bdded"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#ae0ab55c305cee513cd8af8801e8bdded">write</a> (const uint8_t *data, int size)</td></tr>
 <tr class="memdesc:ae0ab55c305cee513cd8af8801e8bdded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends raw data to the sensor  <a href="class_h_l_k___l_d2410.html#ae0ab55c305cee513cd8af8801e8bdded">More...</a><br /></td></tr>
 <tr class="separator:ae0ab55c305cee513cd8af8801e8bdded"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a405d4587476e57056dc374c82bc92ec2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a405d4587476e57056dc374c82bc92ec2">readAckFrame</a> ()</td></tr>
-<tr class="memdesc:a405d4587476e57056dc374c82bc92ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the response from the radar (ACK frame) after issuing a command to the radar  <a href="class_h_l_k___l_d2410.html#a405d4587476e57056dc374c82bc92ec2">More...</a><br /></td></tr>
-<tr class="separator:a405d4587476e57056dc374c82bc92ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28933a4ff5049a22b138780f3ee78d4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a28933a4ff5049a22b138780f3ee78d4d">readAckFrame</a> ()</td></tr>
+<tr class="memdesc:a28933a4ff5049a22b138780f3ee78d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the response from the radar (ACK frame) after issuing a command to the radar  <a href="class_h_l_k___l_d2410.html#a28933a4ff5049a22b138780f3ee78d4d">More...</a><br /></td></tr>
+<tr class="separator:a28933a4ff5049a22b138780f3ee78d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50bd8ef7d205204fc921ae27525d3784"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a50bd8ef7d205204fc921ae27525d3784">sendCommand</a> (<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348">RadarCommand</a> command)</td></tr>
 <tr class="memdesc:a50bd8ef7d205204fc921ae27525d3784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Issues a command to the radar  <a href="class_h_l_k___l_d2410.html#a50bd8ef7d205204fc921ae27525d3784">More...</a><br /></td></tr>
 <tr class="separator:a50bd8ef7d205204fc921ae27525d3784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a37c7b920a26e3124f03235c80955db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a2a37c7b920a26e3124f03235c80955db">sendCommand</a> (<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348">RadarCommand</a> command, uint16_t value)</td></tr>
 <tr class="memdesc:a2a37c7b920a26e3124f03235c80955db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Issues a command with parameter to the radar  <a href="class_h_l_k___l_d2410.html#a2a37c7b920a26e3124f03235c80955db">More...</a><br /></td></tr>
 <tr class="separator:a2a37c7b920a26e3124f03235c80955db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8bce8e940302fab3198d66bec64e036"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#ac8bce8e940302fab3198d66bec64e036">commandAccknowledged</a> (<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348">RadarCommand</a> command, bool remainInConfig)</td></tr>
-<tr class="memdesc:ac8bce8e940302fab3198d66bec64e036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for an accknoledgement for an issued command  <a href="class_h_l_k___l_d2410.html#ac8bce8e940302fab3198d66bec64e036">More...</a><br /></td></tr>
-<tr class="separator:ac8bce8e940302fab3198d66bec64e036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad13fd2e596227a347ef5d6b3b7420d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a0ad13fd2e596227a347ef5d6b3b7420d">commandAccknowledged</a> (<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348">RadarCommand</a> command, bool AckFrameReceived, bool remainInConfig)</td></tr>
+<tr class="memdesc:a0ad13fd2e596227a347ef5d6b3b7420d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for an accknoledgement for an issued command  <a href="class_h_l_k___l_d2410.html#a0ad13fd2e596227a347ef5d6b3b7420d">More...</a><br /></td></tr>
+<tr class="separator:a0ad13fd2e596227a347ef5d6b3b7420d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ef01110a281a33dfc628956391785c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_l_k___l_d2410.html#a8ef01110a281a33dfc628956391785c1">setParameters</a> (<a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348">RadarCommand</a> command, uint32_t par0, uint32_t par1, uint32_t par2)</td></tr>
 <tr class="memdesc:a8ef01110a281a33dfc628956391785c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting the parameters of the radar sensor  <a href="class_h_l_k___l_d2410.html#a8ef01110a281a33dfc628956391785c1">More...</a><br /></td></tr>
 <tr class="separator:a8ef01110a281a33dfc628956391785c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -360,6 +391,25 @@ Static Public Member Functions</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a865f74f467a85eae9bb948373328115ca924d42517495011820d562094f08b385" name="a865f74f467a85eae9bb948373328115ca924d42517495011820d562094f08b385"></a>BluetoothOff&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a865f74f467a85eae9bb948373328115ca3b724e5ea765bebf7c19d3a9c6971e5f" name="a865f74f467a85eae9bb948373328115ca3b724e5ea765bebf7c19d3a9c6971e5f"></a>BluetoothOn&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a6eb62dc23e8755c7e99b4a45b3d054d8" name="a6eb62dc23e8755c7e99b4a45b3d054d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eb62dc23e8755c7e99b4a45b3d054d8">&#9670;&nbsp;</a></span>DistanceResolution</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">HLK_LD2410::DistanceResolution</a> : uint16_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6eb62dc23e8755c7e99b4a45b3d054d8af7e1c25d035bfa891eec80f80065b957" name="a6eb62dc23e8755c7e99b4a45b3d054d8af7e1c25d035bfa891eec80f80065b957"></a>DR_0_75&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6eb62dc23e8755c7e99b4a45b3d054d8af8177c7160508ffc33a83d99bfc29e42" name="a6eb62dc23e8755c7e99b4a45b3d054d8af8177c7160508ffc33a83d99bfc29e42"></a>DR_0_2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6eb62dc23e8755c7e99b4a45b3d054d8a0b168c92284db79906305dc152c6a8b0" name="a6eb62dc23e8755c7e99b4a45b3d054d8a0b168c92284db79906305dc152c6a8b0"></a>DR_ERROR&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -494,7 +544,9 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348a04d03e9a8bef936df0641c7e5507dad3" name="a0fbe7681645f3d9871cc062537a00348a04d03e9a8bef936df0641c7e5507dad3"></a>FACTORY_RESET&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348a1cb807c85148e9c6a563a32227678261" name="a0fbe7681645f3d9871cc062537a00348a1cb807c85148e9c6a563a32227678261"></a>RESTART&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348a642528ca2a21a465dad8e478046eefce" name="a0fbe7681645f3d9871cc062537a00348a642528ca2a21a465dad8e478046eefce"></a>SET_BLUETOOTH&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348a7e23d2b1fe280de7e9eb279b4fff8934" name="a0fbe7681645f3d9871cc062537a00348a7e23d2b1fe280de7e9eb279b4fff8934"></a>GET_MAC_ADDRESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348acdb61146c72e9f9d78f3c1536289b1c7" name="a0fbe7681645f3d9871cc062537a00348acdb61146c72e9f9d78f3c1536289b1c7"></a>READ_MAC_ADDRESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348a6cf1f81c4ebad9cda76291061f20e24d" name="a0fbe7681645f3d9871cc062537a00348a6cf1f81c4ebad9cda76291061f20e24d"></a>SET_DISTANCE_RESOLUTION&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fbe7681645f3d9871cc062537a00348a85bcf81d5b59c034cc26b4cfbfd2fb49" name="a0fbe7681645f3d9871cc062537a00348a85bcf81d5b59c034cc26b4cfbfd2fb49"></a>READ_DISTANCE_RESOLUTION&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -675,13 +727,13 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p >HAs to be initialized to he appropriate speed before calling <a class="el" href="class_h_l_k___l_d2410.html#a9d3d32062d49f4e7f319e4c0c37f65d4" title="Initialize the radar sensor and associate it to UART">begin()</a></p>
+<p >Has to be initialized to he appropriate speed before calling <a class="el" href="class_h_l_k___l_d2410.html#a9d3d32062d49f4e7f319e4c0c37f65d4" title="Initialize the radar sensor and associate it to UART">begin()</a></p>
 <dl class="section return"><dt>Returns</dt><dd>true on sucess</dd></dl>
 
 </div>
 </div>
-<a id="ac8bce8e940302fab3198d66bec64e036" name="ac8bce8e940302fab3198d66bec64e036"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8bce8e940302fab3198d66bec64e036">&#9670;&nbsp;</a></span>commandAccknowledged()</h2>
+<a id="a0ad13fd2e596227a347ef5d6b3b7420d" name="a0ad13fd2e596227a347ef5d6b3b7420d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad13fd2e596227a347ef5d6b3b7420d">&#9670;&nbsp;</a></span>commandAccknowledged()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -691,6 +743,12 @@ Static Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_h_l_k___l_d2410.html#a0fbe7681645f3d9871cc062537a00348">RadarCommand</a>&#160;</td>
           <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>AckFrameReceived</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -711,6 +769,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">command</td><td>command to be sent (see <a class="el" href="">enum RadarCommand</a>)</td></tr>
+    <tr><td class="paramname">AckFrameReceived</td><td>was an ACK frame succesfully received</td></tr>
     <tr><td class="paramname">remainInConfig</td><td>wherethere to remain on config mode after ACK has been received</td></tr>
   </table>
   </dd>
@@ -890,8 +949,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a601f39229a537441d20af867fcaeb368" name="a601f39229a537441d20af867fcaeb368"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a601f39229a537441d20af867fcaeb368">&#9670;&nbsp;</a></span>frameType()</h2>
+<a id="af7bcaa93faea50c96b32e0472bd92dfb" name="af7bcaa93faea50c96b32e0472bd92dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7bcaa93faea50c96b32e0472bd92dfb">&#9670;&nbsp;</a></span>frameType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -900,7 +959,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname"><a class="el" href="class_h_l_k___l_d2410.html#aaee79e6cd6622844897f6fca82a07ccd">HLK_LD2410::FrameType</a> HLK_LD2410::frameType </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>frame</em> = <code>true</code></td><td>)</td>
+          <td class="paramname"><em>frame</em> = <code><a class="el" href="class_h_l_k___l_d2410.html#a8a3f9237be4cf5dc2fd5fda0ce0162e6a2ff4f2527240f3db1d12dd55841f6b5f">HLK_LD2410::LAST_FRAME</a></code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -914,7 +973,8 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>FrameType value { <ul>
+<dl class="section return"><dt>Returns</dt><dd>FrameType value <br  />
+ <ul>
 <li>
 UNIDENTIFIED_FRAME,  </li>
 <li>
@@ -928,7 +988,7 @@ ACK_FRAME,  </li>
 <li>
 UNKNOWN_FRAME  </li>
 </ul>
-}</dd></dl>
+</dd></dl>
 
 </div>
 </div>
@@ -955,8 +1015,36 @@ UNKNOWN_FRAME  </li>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the timeout in milliseconds </p>
-<dl class="section return"><dt>Returns</dt><dd>Time in ms to wait for a response (ACK fame)</dd></dl>
+<p>Returns the timeout for waiting for an accknowledgement frame in milliseconds </p>
+<dl class="section return"><dt>Returns</dt><dd>Time in milliseconds to wait for a response (ACK fame)</dd></dl>
+
+</div>
+</div>
+<a id="a53ea7fb2531bb4380fcc22bcd4083479" name="a53ea7fb2531bb4380fcc22bcd4083479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53ea7fb2531bb4380fcc22bcd4083479">&#9670;&nbsp;</a></span>getInterCommandDelay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long HLK_LD2410::getInterCommandDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the minimum time between issuing two successive commands to the radar </p>
+<dl class="section return"><dt>Returns</dt><dd>Time in milliseconds between two successive commands</dd></dl>
 
 </div>
 </div>
@@ -1160,14 +1248,14 @@ UNKNOWN_FRAME  </li>
 
 </div>
 </div>
-<a id="a405d4587476e57056dc374c82bc92ec2" name="a405d4587476e57056dc374c82bc92ec2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a405d4587476e57056dc374c82bc92ec2">&#9670;&nbsp;</a></span>readAckFrame()</h2>
+<a id="a28933a4ff5049a22b138780f3ee78d4d" name="a28933a4ff5049a22b138780f3ee78d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28933a4ff5049a22b138780f3ee78d4d">&#9670;&nbsp;</a></span>readAckFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void HLK_LD2410::readAckFrame </td>
+          <td class="memname">bool HLK_LD2410::readAckFrame </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1177,6 +1265,29 @@ UNKNOWN_FRAME  </li>
 
 <p>Waits for the response from the radar (ACK frame) after issuing a command to the radar </p>
 <p >Reads the incoming data of the ACK frame and stores it in the buffer and checks its validity</p>
+<dl class="section return"><dt>Returns</dt><dd>true on sucess, false on timeout</dd></dl>
+
+</div>
+</div>
+<a id="a8efd45d472265817b56056aa474eca81" name="a8efd45d472265817b56056aa474eca81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8efd45d472265817b56056aa474eca81">&#9670;&nbsp;</a></span>reqDistanceResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">HLK_LD2410::DistanceResolution</a> HLK_LD2410::reqDistanceResolution </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the distance resolution of the radar sensor </p>
+<p >Sends the Read Distance Resolution command to the sensor and waits for reply from the sensor</p>
+<p >If the sensor was already in command mode before calling this function it will remain in command mode</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">DistanceResolution struct</a> either DR_0_75, DR_0_2 or DR_ERROR if reading failed</dd></dl>
 
 </div>
 </div>
@@ -1202,6 +1313,28 @@ UNKNOWN_FRAME  </li>
 
 </div>
 </div>
+<a id="a450633052577375e725fd5b9482f977f" name="a450633052577375e725fd5b9482f977f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a450633052577375e725fd5b9482f977f">&#9670;&nbsp;</a></span>reqMacAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_h_l_k___l_d2410_1_1_m_a_caddress.html">HLK_LD2410::MACaddress</a> HLK_LD2410::reqMacAddress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the Bluetooth MAC address of the radar sensor </p>
+<p >Sends the Read MAC address command to the sensor and waits for reply from the sensor</p>
+<p >If the sensor was already in command mode before calling this function it will remain in command mode</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_h_l_k___l_d2410_1_1_m_a_caddress.html">the MAC address</a></dd></dl>
+
+</div>
+</div>
 <a id="a38ff5fed23c920661973eff23882f10f" name="a38ff5fed23c920661973eff23882f10f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38ff5fed23c920661973eff23882f10f">&#9670;&nbsp;</a></span>reqParameters()</h2>
 
@@ -1220,7 +1353,7 @@ UNKNOWN_FRAME  </li>
 <p>Returns the parameters of the radar sensor </p>
 <p >Sends the Read Parameter command to the sensor and waits for reply from the sensor</p>
 <p >If the sensor was already in command mode before calling this function it will remain in command mode</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_h_l_k___l_d2410_1_1_radar_parameters.html">RadarParameters</a> struct containing all the parameters of the sensor (#gates, motionSensitivity and StaticSensitivity per gate, noPersonDuration)</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_h_l_k___l_d2410_1_1_radar_parameters.html">RadarParameters</a> containing all the parameters of the sensor (#gates, motionSensitivity and StaticSensitivity per gate, noPersonDuration)</dd></dl>
 
 </div>
 </div>
@@ -1443,6 +1576,45 @@ BAUD_460800 </li>
 
 </div>
 </div>
+<a id="a2e9b94175a9b441822529f36f3bf8da8" name="a2e9b94175a9b441822529f36f3bf8da8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e9b94175a9b441822529f36f3bf8da8">&#9670;&nbsp;</a></span>setBluetooth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HLK_LD2410::setBluetooth </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_h_l_k___l_d2410.html#a865f74f467a85eae9bb948373328115c">BluetoothMode</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns Bluetooth ON / OFF </p>
+<p >Controls Bluetooth function of the module</p>
+<p >Sends the command to turn on/off Bluetooth and waits for reply from the sensor</p>
+<p >If the sensor was already in command mode before calling this function it will remain in command mode</p>
+<p >This feature is not suppotred on some modules (firmware v1.07.22082218 or is it type 0 of the firmware) or older</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="class_h_l_k___l_d2410.html#a865f74f467a85eae9bb948373328115ca924d42517495011820d562094f08b385">HLK_LD2410::BluetoothOff</a> / <a class="el" href="class_h_l_k___l_d2410.html#a865f74f467a85eae9bb948373328115ca3b724e5ea765bebf7c19d3a9c6971e5f">HLK_LD2410::BluetoothOn</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on sucess</dd></dl>
+
+</div>
+</div>
 <a id="a20c6a656a227a9437d50d1aeea0ed0ce" name="a20c6a656a227a9437d50d1aeea0ed0ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20c6a656a227a9437d50d1aeea0ed0ce">&#9670;&nbsp;</a></span>setDistanceAndDuration()</h2>
 
@@ -1498,6 +1670,43 @@ BAUD_460800 </li>
 
 </div>
 </div>
+<a id="ad67daca1c5fcf32ff1f507bf9b5493c8" name="ad67daca1c5fcf32ff1f507bf9b5493c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad67daca1c5fcf32ff1f507bf9b5493c8">&#9670;&nbsp;</a></span>setDistanceResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HLK_LD2410::setDistanceResolution </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8">DistanceResolution</a>&#160;</td>
+          <td class="paramname"><em>distR</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the distance resolution for the gares (0.2m/0.75m) </p>
+<p >Sends the Set Distance Resolution command to the sensor and waits for reply from the sensor</p>
+<p >If the sensor was already in command mode before calling this function it will remain in command mode</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distR</td><td><a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8af7e1c25d035bfa891eec80f80065b957">HLK_LD2410::DR_0_75</a> / <a class="el" href="class_h_l_k___l_d2410.html#a6eb62dc23e8755c7e99b4a45b3d054d8af8177c7160508ffc33a83d99bfc29e42">HLK_LD2410::DR_0_2</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on sucess</dd></dl>
+
+</div>
+</div>
 <a id="a9d22032d55f0614a1a649287e9d47b4c" name="a9d22032d55f0614a1a649287e9d47b4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d22032d55f0614a1a649287e9d47b4c">&#9670;&nbsp;</a></span>setFrameTimeOut()</h2>
 
@@ -1522,13 +1731,48 @@ BAUD_460800 </li>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the timeout in milliseconds </p>
+<p>Sets the timeout for waiting for an accknowledgement frame </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>Time in ms to wait for a response (ACK fame)</td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a71a355cd1a320bb51770a39a3ccc34a7" name="a71a355cd1a320bb51770a39a3ccc34a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a355cd1a320bb51770a39a3ccc34a7">&#9670;&nbsp;</a></span>setInterCommandDelay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HLK_LD2410::setInterCommandDelay </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>interComDelay</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the minimum time between issuing two successive commands to the radar </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interComDelay</td><td>Time in milliseconds between two successive commands</td></tr>
+  </table>
+  </dd>
+</dl>
+<p >Some radars are slower in procceing issued comands and have small imput buffers (RD-01)</p>
 
 </div>
 </div>
